@@ -1,3 +1,4 @@
+import type { Project } from "@/types/project";
 
 export const projects = [
   {
@@ -15,6 +16,7 @@ export const projects = [
     stack: ["HTML5", "CSS3", "JavaScript", "Responsividade", "SEO básico"],
     desktopImage: "/img/projects/homemnovo-desktop.png",
     mobileImage: "/img/projects/homemnovo-mobile.png",
+    featured: true,
   },
   {
     title: "Landing Page – Curso Agropecuário",
@@ -31,6 +33,7 @@ export const projects = [
     stack: ["HTML5", "CSS3", "JavaScript", "Layout mobile-first"],
     desktopImage: "/img/projects/primeprofissoes-desktop.png",
     mobileImage: "/img/projects/primeprofissoes-mobile.png",
+    featured: true,
   },
   {
     title: "Site – Gráfica Rápida",
@@ -47,6 +50,7 @@ export const projects = [
     stack: ["WordPress", "HTML5", "CSS3", "Formulário de orçamento"],
     desktopImage: "/img/projects/graficaloprint-desktop.png",
     mobileImage: "/img/projects/graficaloprint-mobile.png",
+    featured: true,
   },
   {
     title: "Site – Método IPD",
@@ -63,6 +67,7 @@ export const projects = [
     stack: ["HTML5", "CSS3", "GreatPages", "Integração com CRM"],
     desktopImage: "/img/projects/metodoipd-desktop.png",
     mobileImage: "/img/projects/metodoipd-mobile.png",
+    featured: true,
   },
   {
     title: "Site – Ignis (Terapia Cognitiva)",
@@ -79,6 +84,7 @@ export const projects = [
     stack: ["WordPress", "HTML5", "CSS3", "UX focada em confiança"],
     desktopImage: "/img/projects/ignis-desktop.png",
     mobileImage: "/img/projects/ignis-mobile.png",
+    featured: true,
   },
   {
     title: "Use Dude – Loja de Moda Feminina",
@@ -95,9 +101,10 @@ export const projects = [
     stack: ["HTML5", "CSS3", "JavaScript", "Mobile-first"],
     desktopImage: "/img/projects/usedude-desktop.png",
     mobileImage: "/img/projects/usedude-mobile.png",
+    featured: true,
   },
-  // você já tinha citado esses dois como extras (acadêmicos/experimentos),
-  // deixei aqui para a futura página /projetos completa:
+
+  // Acadêmicos / extras
   {
     title: "Quiz Interativo (JavaScript)",
     type: "Projeto acadêmico",
@@ -112,6 +119,7 @@ export const projects = [
     stack: ["HTML5", "CSS3", "JavaScript"],
     desktopImage: "/img/projects/quiz-desktop.png",
     mobileImage: "/img/projects/quiz-mobile.png",
+    featured: false,
   },
   {
     title: "Sistema de Biblioteca (Python)",
@@ -127,5 +135,6 @@ export const projects = [
     stack: ["Python", "Lógica de programação", "Matplotlib"],
     desktopImage: "/img/projects/biblioteca-desktop.png",
     mobileImage: "/img/projects/biblioteca-mobile.png",
+    featured: false,
   },
-];
+] satisfies Project[];

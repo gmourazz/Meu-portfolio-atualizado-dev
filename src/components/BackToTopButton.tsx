@@ -1,42 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 
-const BackToTopButton = () => {
-  const [visible, setVisible] = useState(false);
+import type { BackToTopConfig } from "@/types/backToTop";
+import { scrollToTopSmooth, shouldShowBackToTop } from "@/services/backToTopService";
+
+const DEFAULT_CONFIG: Required<BackToTopConfig> = {
+  anchorId: "about",
+  fallbackScrollY: 400,
+};
+
+type Props = {
+  config?: BackToTopConfig;
+};
+
+const BackToTopButton: React.FC<Props> = ({ config }) => {
+  const { anchorId, fallbackScrollY } = { ...DEFAULT_CONFIG, ...(config ?? {}) };
+
+  const [visible, setVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const aboutSection = document.getElementById("about");
-
-      if (aboutSection) {
-        const rect = aboutSection.getBoundingClientRect();
-        // mostra a seta quando o topo da seção "Sobre" já passou do topo da tela
-        setVisible(rect.top <= 0);
-      } else {
-        // fallback se não achar o #about
-        setVisible(window.scrollY > 400);
-      }
+    const handleScroll = (): void => {
+      setVisible(shouldShowBackToTop(anchorId, fallbackScrollY));
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // já checa na primeira montagem
+    handleScroll(); // checa na primeira montagem
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  }, [anchorId, fallbackScrollY]);
 
   if (!visible) return null;
 
   return (
     <button
       type="button"
-      onClick={scrollToTop}
+      onClick={scrollToTopSmooth}
       className="
         fixed
         bottom-6 right-6

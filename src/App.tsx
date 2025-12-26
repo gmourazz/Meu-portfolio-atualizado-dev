@@ -1,20 +1,18 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Routes, Route } from "react-router-dom";
-
 import { Toaster } from "@/components/ui/toaster";
+import Hero from "@/pages/Hero";
+import About from "@/pages/About";
+import Technologies from "@/pages/Technologies";
+import Projects from "@/pages/Projects";
+import Contact from "@/pages/Contact";
+import Footer from "@/pages/Footer";
+import Navigation from "./pages/Navigation";
+import AllProjects from "@/pages/AllProjects";
+import BackToTopButton from "@/components/BackToTopButton";
 
-import Hero from "./pages/Hero";
-import About from "./pages/About";
-import Technologies from "./pages/Technologies";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
-import Footer from "./pages/Footer";
-import Navigation from "./pages/MenuNav";
-import AllProjects from "./pages/AllProjects";
-import BackToTopButton from "./components/ui/BackToTopButton";
-
-function App() {
+const App: React.FC = () => {
   return (
     <>
       <Helmet>
@@ -39,11 +37,6 @@ function App() {
       </Helmet>
 
       <div className="min-h-screen relative">
-        {/* Se não quiser mais o fundo antigo, pode remover esse bloco */}
-        <div className="galaxy-bg">
-          <div className="stars" />
-          <div className="nebula" />
-        </div>
 
         <Navigation />
 
@@ -76,6 +69,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;
