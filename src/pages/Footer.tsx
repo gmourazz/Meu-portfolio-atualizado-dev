@@ -37,14 +37,22 @@ const Footer: React.FC = () => {
             text-center sm:text-left
           "
         >
-          <div className="space-y-0.5">
-            <p className="font-montserrat text-[12px] sm:text-[13px] md:text-sm text-[#E9DFD2] dark:text-[#F3EEE8] leading-snug">
-              © 2025 Geovanna Moura. Todos os direitos reservados.
-            </p>
-
-            <p className="font-montserrat text-[10px] sm:text-[11px] md:text-[12px] text-[#D1BFA3] dark:text-white/60 leading-snug">
-              Desenvolvido com carinho, café e código.
-            </p>
+          {/* bloco da logo + textos */}
+          <div className="space-y-1">
+            <div className="flex items-center justify-center sm:justify-start gap-4">
+              <img
+                src="/img/logobranca.png"
+                alt="Logo Geovanna Moura"
+                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
+              />
+              <p className="font-montserrat text-[12px] sm:text-[13px] md:text-sm text-[#E9DFD2] dark:text-[#F3EEE8] leading-snug text-left">
+                © 2025 Geovanna Moura. Todos os direitos reservados.
+                <br />
+                <span className="font-montserrat text-[10px] sm:text-[11px] md:text-[12px] text-[#D1BFA3] dark:text-white/60">
+                  Desenvolvido com carinho, café e código.
+                </span>
+              </p>
+            </div>
           </div>
 
           <Button

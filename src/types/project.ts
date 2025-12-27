@@ -1,4 +1,3 @@
-
 export type Project = {
   title: string;
   type?: string;
@@ -11,5 +10,7 @@ export type Project = {
   stack?: string[];
   desktopImage?: string;
   mobileImage?: string;
+  desktopImages?: string[];
+  mobileImages?: string[];
   featured?: boolean;
 };

@@ -3,48 +3,10 @@
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Vite: tudo que estiver em /public vira raiz "/" -->
-    <link rel="icon" type="image/png" href="/logoum.png" />
-
-    <meta name="generator" content="Geovanna Moura" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Geovanna Moura | DEV</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-    />
-
-    <style>
-      :root {
-        font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
-      }
-      body {
-        margin: 0;
-        font-family: inherit;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div id="root"></div>
-
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-
     <!-- Dark mode: aplica a classe "dark" no <html> antes de renderizar -->
     <script>
       (function () {
-        const STORAGE_KEY = "theme"; // se você usar outro nome no toggle, troca aqui
+        const STORAGE_KEY = "theme";
         const saved = localStorage.getItem(STORAGE_KEY);
         const prefersDark =
           window.matchMedia &&
@@ -55,8 +17,8 @@
       })();
     </script>
 
-    <!-- Vite: tudo que estiver em /public vira raiz "/" -->
-    <link rel="icon" type="image/png" href="/logoum.png" />
+    <!-- Vite: tudo que está em /public vira raiz "/" -->
+    <link rel="icon" type="image/png" href="/img/logoum.png" />
 
     <meta name="generator" content="Geovanna Moura" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -84,7 +46,6 @@
 
   <body>
     <div id="root"></div>
-
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

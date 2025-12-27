@@ -34,7 +34,7 @@ const AllProjects: React.FC = () => {
       className="
         relative
         bg-[#E9DFD2] dark:bg-[#0B0D10]
-        py-16 sm:py-18 lg:py-24
+        py-14 sm:py-18 lg:py-24
         overflow-hidden
       "
     >
@@ -57,25 +57,31 @@ const AllProjects: React.FC = () => {
           className="mb-10 sm:mb-12 md:mb-14"
         >
           {/* header responsivo */}
-          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl text-left">
-              <p className="text-[10px] xs:text-xs md:text-sm tracking-[0.28em] uppercase text-[#A6806A] dark:text-[#D1BFA3] font-montserrat mb-3">
+              <p className="text-[10px] xs:text-xs md:text-sm tracking-[0.24em] xs:tracking-[0.28em] uppercase text-[#A6806A] dark:text-[#D1BFA3] font-montserrat mb-2.5 sm:mb-3">
                 Meus Projetos
               </p>
 
-              <h1 className="font-montserrat text-2xl xs:text-[28px] sm:text-3xl md:text-4xl lg:text-[40px] font-bold text-[#5B4636] dark:text-[#F8F5F2] leading-tight">
+              <h1 className="font-montserrat text-2xl xs:text-[26px] sm:text-3xl md:text-4xl lg:text-[40px] font-bold text-[#5B4636] dark:text-[#F8F5F2] leading-tight">
                 Todos os <span className="text-[#C07A50]">meus projetos</span>
                 <br className="hidden sm:block" />
                 <span className="sm:hidden"> </span>
                 em um só lugar.
               </h1>
 
-              <div className="mt-4 h-[3px] w-full max-w-[240px] sm:max-w-[320px] md:max-w-[384px] rounded-full bg-[#C07A50]" />
+              <div className="mt-3 sm:mt-4 h-[3px] w-full max-w-[220px] sm:max-w-[280px] md:max-w-[360px] rounded-full bg-[#C07A50]" />
 
               <p className="mt-4 sm:mt-5 text-[13px] xs:text-sm md:text-base lg:text-[15px] text-[#7A6A5B] dark:text-[#CFC7BE] leading-relaxed">
                 Aqui você encontra uma visão mais completa dos projetos que já
-                desenvolvi para os meus clientes como: One pages, Landing pages,
-                Experiências focadas em UX/UI e alguns Projetos Acadêmicos.
+                desenvolvi para os meus clientes: one pages, landing pages e
+                experiências digitais focadas em UX/UI, performance e resultado.
+                Alguns projetos podem estar temporariamente fora do ar, pois
+                muitos clientes desativam páginas por motivos pessoais ou
+                estratégicos, mas mantenho esses cases aqui pela relevância que
+                tiveram na minha trajetória. Este portfólio é um recorte dos
+                projetos mais importantes; tenho outros trabalhos menores que
+                não foram listados para manter o foco nos cases principais.
               </p>
             </div>
 
@@ -90,7 +96,7 @@ const AllProjects: React.FC = () => {
                   rounded-full
                   border border-[#5B4636] bg-[#5B4636]
                   text-[#F8F5F2]
-                  px-4 py-2
+                  px-4 py-2.5
                   text-[12px] md:text-sm
                   font-montserrat
                   shadow-sm
@@ -131,6 +137,8 @@ const AllProjects: React.FC = () => {
                     shadow-lg
                     text-left
                     md:min-w-[280px]
+                    max-h-[260px]
+                    overflow-y-auto
 
                     dark:border-white/10
                     dark:bg-[#0C0F13]
@@ -154,7 +162,7 @@ const AllProjects: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="flex flex-wrap gap-2 max-h-48 sm:max-h-44 overflow-y-auto pr-1">
+                  <div className="flex flex-wrap gap-2">
                     {allTechs.map((tech) => {
                       const active = selectedTechs.includes(tech);
                       return (
@@ -174,7 +182,6 @@ const AllProjects: React.FC = () => {
                                 ? "bg-[#C07A50] border-[#C07A50] text-[#F8F5F2]"
                                 : "bg-white border-[#E0D3C2] text-[#5B4636] hover:bg-[#C07A50]/10 hover:border-[#C07A50]/70"
                             }
-
                             ${
                               active
                                 ? "dark:bg-[#C07A50] dark:border-[#C07A50] dark:text-[#F8F5F2]"

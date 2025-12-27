@@ -100,7 +100,9 @@ const Contact: React.FC = () => {
 
             <p className="text-[13px] xs:text-sm md:text-[15px] text-[#E9DFD2] dark:text-[#CFC7BE] leading-relaxed mb-5">
               O WhatsApp é o melhor lugar para falarmos sobre{" "}
-              <span className="font-semibold text-[#F8F5F2]">projetos, freelas</span>{" "}
+              <span className="font-semibold text-[#F8F5F2]">
+                projetos, freelas
+              </span>{" "}
               e ideias que você queira tirar do papel. Clique no botão abaixo e
               vamos construir algo incrível juntos.
             </p>
@@ -154,7 +156,14 @@ const Contact: React.FC = () => {
               Outras formas de contato
             </p>
 
-            <div className="space-y-3">
+            {/* mobile/tablet = pílulas lado a lado; desktop = lista vertical como antes */}
+            <div
+              className="
+                grid grid-cols-2 gap-2 sm:gap-3
+                lg:grid-cols-1
+                lg:flex lg:flex-col lg:space-y-3 lg:gap-0
+              "
+            >
               {socialLinks.map((link, index) => {
                 const Icon = link.icon;
 
@@ -170,6 +179,7 @@ const Contact: React.FC = () => {
                     viewport={{ once: true }}
                     whileHover={{ y: -2, scale: 1.01 }}
                     className="
+                      w-full
                       flex items-center justify-between gap-3 sm:gap-4
                       rounded-2xl sm:rounded-full
                       border border-[#E9DFD2]/26

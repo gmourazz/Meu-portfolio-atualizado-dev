@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,44 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const hasLink = !!project.url;
   const hasTestimonial = !!project.testimonial;
   const isEven = index % 2 === 0;
+
+  // ------- SLIDES (desktop + mobile) -------
+  const desktopSlides: string[] =
+    project.desktopImages && project.desktopImages.length > 0
+      ? project.desktopImages
+      : project.desktopImage
+      ? [project.desktopImage]
+      : [];
+
+  const mobileSlides: string[] =
+    project.mobileImages && project.mobileImages.length > 0
+      ? project.mobileImages
+      : project.mobileImage
+      ? [project.mobileImage]
+      : [];
+
+  const [desktopIndex, setDesktopIndex] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
+
+  useEffect(() => {
+    if (desktopSlides.length <= 1) return;
+
+    const id = window.setInterval(() => {
+      setDesktopIndex((prev) => (prev + 1) % desktopSlides.length);
+    }, 15000);
+
+    return () => window.clearInterval(id);
+  }, [desktopSlides.length]);
+
+  useEffect(() => {
+    if (mobileSlides.length <= 1) return;
+
+    const id = window.setInterval(() => {
+      setMobileIndex((prev) => (prev + 1) % mobileSlides.length);
+    }, 15000);
+
+    return () => window.clearInterval(id);
+  }, [mobileSlides.length]);
 
   return (
     <motion.article
@@ -32,12 +70,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       "
     >
       <div
-        className={`grid gap-8 items-center lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.1fr)]
-        ${
-          isEven
-            ? ""
-            : "lg:[&>div:first-child]:order-2 lg:[&>div:last-child]:order-1"
-        }`}
+        className={`
+          grid gap-8 items-center
+          lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.1fr)]
+          ${
+            isEven
+              ? ""
+              : "lg:[&>div:first-child]:order-2 lg:[&>div:last-child]:order-1"
+          }
+        `}
       >
         {/* PREVIEW: desktop + iPhone */}
         <div className="relative">
@@ -64,33 +105,49 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               </span>
             </div>
 
-            <div className="relative aspect-[16/9] bg-black overflow-hidden">
-              {project.desktopImage && (
-                <img
-                  src={project.desktopImage}
+            {/* sem cortar laterais e sem sobrar borda em cima/baixo */}
+            <div className="relative bg-black overflow-hidden">
+              {desktopSlides.length > 0 && (
+                <motion.img
+                  key={desktopSlides[desktopIndex]}
+                  src={desktopSlides[desktopIndex]}
                   alt={`${project.title} – preview em desktop`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto block"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4 }}
                 />
               )}
             </div>
           </div>
 
-          {/* iPhone mock */}
+          {/* iPhone mock – borda fina no mobile, igual estilo do desktop */}
           <motion.div
             whileHover={{ y: -2 }}
-            className={`absolute bottom-[-16px] w-32 md:w-36 aspect-[9/19] rounded-[1.6rem]
-              bg-[#050505] border-[3px] border-[#222222] dark:border-[#2A2F35]
+            className="
+              absolute
+              bottom-[-64px] sm:bottom-[-72px] md:bottom-[-80px]
+              right-[-4px] sm:right-[-20px] md:right-[-32px]
+              w-24 sm:w-28 md:w-32 lg:w-36
+              aspect-[9/19] rounded-[1.6rem]
+              bg-[#050505]
+              border border-[#222222] dark:border-[#2A2F35]
+              sm:border-[2px] md:border-[3px]
               shadow-[0_18px_45px_rgba(0,0,0,0.78)]
               flex flex-col px-1.5 pt-1.5 pb-2
-              ${isEven ? "right-0" : "left-0"}`}
+            "
           >
             <div className="w-10 h-2 rounded-full bg-[#151515] mx-auto mb-1.5" />
             <div className="flex-1 rounded-[1rem] overflow-hidden bg-black">
-              {project.mobileImage && (
-                <img
-                  src={project.mobileImage}
+              {mobileSlides.length > 0 && (
+                <motion.img
+                  key={mobileSlides[mobileIndex]}
+                  src={mobileSlides[mobileIndex]}
                   alt={`${project.title} – preview em mobile`}
                   className="w-full h-full object-cover"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4 }}
                 />
               )}
             </div>
@@ -99,7 +156,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         </div>
 
         {/* CONTEÚDO */}
-        <div className="space-y-4">
+        <div className="space-y-4 mt-10 md:mt-0">
           <header className="space-y-2">
             <h3 className="font-montserrat text-xl md:text-[22px] font-semibold text-[#5B4636] dark:text-[#F8F5F2]">
               {project.title}

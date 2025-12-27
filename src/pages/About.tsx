@@ -16,13 +16,20 @@ const About: React.FC = () => {
         overflow-hidden
       "
     >
-      {/* glows bem sutis (só no dark) pra dar profundidade sem “galaxy”) */}
+      {/* glows bem sutis (só no dark) */}
       <div className="pointer-events-none absolute inset-0 -z-10 hidden dark:block">
         <div className="absolute -top-24 left-[-40px] w-72 h-72 rounded-full bg-[#C07A50] opacity-[0.10] blur-3xl" />
         <div className="absolute bottom-[-90px] right-[-60px] w-80 h-80 rounded-full bg-[#A6806A] opacity-[0.10] blur-3xl" />
       </div>
 
-      <div className="w-full px-4 sm:px-8 lg:px-12 2xl:px-16 py-16 sm:py-18 lg:py-24 mx-auto">
+      <div
+        className="
+          w-full mx-auto
+          max-w-6xl xl:max-w-7xl 2xl:max-w-none
+          px-4 sm:px-8 lg:px-12 2xl:px-16
+          py-16 sm:py-18 lg:py-24
+        "
+      >
         {/* Foto + heading no topo */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -35,7 +42,10 @@ const About: React.FC = () => {
             <div
               className="
                 relative
-                w-44 h-44 xs:w-48 xs:h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80
+                w-40 h-40 xs:w-44 xs:h-44
+                sm:w-52 sm:h-52
+                md:w-64 md:h-64
+                lg:w-72 lg:h-72
                 rounded-full overflow-hidden
                 border border-[#D1BFA3] dark:border-white/10
                 bg-[#F8F5F2] dark:bg-[#141619]
@@ -45,7 +55,7 @@ const About: React.FC = () => {
               "
             >
               <img
-                src="/perfilcorp.jpeg"
+                src="/img/perfilcorp.jpeg"
                 alt="Foto profissional de Geovanna Moura"
                 className="w-full h-full object-cover"
               />
@@ -58,11 +68,19 @@ const About: React.FC = () => {
             SOBRE MIM
           </h2>
 
-          <div className="mt-4 sm:mt-5 h-1.5 w-36 sm:w-44 md:w-52 rounded-full bg-[#C07A50]" />
+          <div className="mt-4 sm:mt-5 h-1.5 w-32 sm:w-40 md:w-52 rounded-full bg-[#C07A50]" />
         </motion.div>
 
         {/* Conteúdo principal – texto + cards */}
-        <div className="grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start gap-y-10 sm:gap-y-12 gap-x-6 md:gap-x-10 xl:gap-x-14">
+        <div
+          className="
+            grid
+            gap-y-10 sm:gap-y-12
+            gap-x-6 md:gap-x-10 xl:gap-x-14
+            lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]
+            items-start
+          "
+        >
           {/* Coluna esquerda – texto mais pessoal */}
           <motion.div
             initial={{ opacity: 0, x: -25 }}
@@ -71,7 +89,7 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             className="space-y-5 sm:space-y-6 max-w-3xl lg:pl-4 xl:pl-8"
           >
-            <p className="text-[15px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
+            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
               Olá, eu sou a{" "}
               <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
                 Geovanna Moura
@@ -85,7 +103,7 @@ const About: React.FC = () => {
               .
             </p>
 
-            <p className="text-[15px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
+            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
               Atuo há mais de{" "}
               <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
                 2 anos com desenvolvimento front-end
@@ -102,7 +120,7 @@ const About: React.FC = () => {
               na área.
             </p>
 
-            <p className="text-[15px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
+            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
               Me encontrei na tecnologia porque consigo unir lógica, design e
               pessoas no mesmo lugar. Gosto bastante de pegar{" "}
               <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
@@ -114,7 +132,7 @@ const About: React.FC = () => {
               contextos de sistemas de gestão e rotinas críticas do dia a dia.
             </p>
 
-            <p className="text-[15px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
+            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
               Tenho uma paixão especial por{" "}
               <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
                 soluções digitais responsivas e bem estruturadas
@@ -129,7 +147,7 @@ const About: React.FC = () => {
               o produto foi realmente pensado para a rotina dele.
             </p>
 
-            <p className="text-[15px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
+            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
               No dia a dia, não fico só no código. Gosto de estar próxima de
               quem usa o sistema e de quem define as regras de negócio.
               Participo de testes manuais e colaboro como{" "}
@@ -141,7 +159,7 @@ const About: React.FC = () => {
               sentido na prática.
             </p>
 
-            <p className="text-[15px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
+            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
               Fora do ambiente corporativo, também desenvolvo projetos para{" "}
               <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
                 pequenos negócios e empreendedores
@@ -162,7 +180,11 @@ const About: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
+            className="
+              grid grid-cols-1
+              md:grid-cols-2
+              gap-4 md:gap-5
+            "
           >
             {traits.map((item) => (
               <motion.div
@@ -187,12 +209,12 @@ const About: React.FC = () => {
                     <item.icon className="w-5 h-5 text-[#5B4636] dark:text-[#F3EEE7]" />
                   </div>
 
-                  <h4 className="text-[15px] sm:text-base md:text-lg font-montserrat font-semibold leading-snug text-[#5B4636] dark:text-[#F3EEE7]">
+                  <h4 className="text-[14px] sm:text-base md:text-lg font-montserrat font-semibold leading-snug text-[#5B4636] dark:text-[#F3EEE7]">
                     {item.title}
                   </h4>
                 </div>
 
-                <p className="text-[13px] sm:text-sm md:text-base font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
+                <p className="text-[12px] sm:text-sm md:text-base font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
                   {item.description}
                 </p>
               </motion.div>

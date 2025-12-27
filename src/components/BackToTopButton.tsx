@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 
 import type { BackToTopConfig } from "@/types/backToTop";
-import { scrollToTopSmooth, shouldShowBackToTop } from "@/services/backToTopService";
+import {
+  scrollToTopSmooth,
+  shouldShowBackToTop,
+} from "@/services/backToTopService";
 
 const DEFAULT_CONFIG: Required<BackToTopConfig> = {
   anchorId: "about",
@@ -24,7 +27,7 @@ const BackToTopButton: React.FC<Props> = ({ config }) => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // checa na primeira montagem
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [anchorId, fallbackScrollY]);
@@ -37,7 +40,9 @@ const BackToTopButton: React.FC<Props> = ({ config }) => {
       onClick={scrollToTopSmooth}
       className="
         fixed
-        bottom-6 right-6
+        bottom-7 right-14
+        sm:bottom-7 sm:right-8
+        md:bottom-6 md:right-4
         z-40
         rounded-full
         bg-[#C07A50]
@@ -47,7 +52,7 @@ const BackToTopButton: React.FC<Props> = ({ config }) => {
         transition-all
         duration-300
         flex items-center justify-center
-        w-11 h-11 md:w-12 md:h-12
+        w-10 h-10 md:w-12 md:h-12
         border border-[#F8F5F2]/40
       "
       aria-label="Voltar ao topo"

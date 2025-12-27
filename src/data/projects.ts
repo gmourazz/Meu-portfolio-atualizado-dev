@@ -2,37 +2,92 @@ import type { Project } from "@/types/project";
 
 export const projects = [
   {
-    title: "Landing Page – Curso de Autoajuda",
-    type: "Landing page",
-    segment: "Infoproduto · Desenvolvimento pessoal",
-    url: "https://www.adauangoes.com.br/homemnovo",
+    title: "CRM Premium – Gestão de Carteira",
+    type: "Sistema web · CRM",
+    segment: "Telecom · Clientes premium",
+    url: "https://bootstrap.rbi.skyhigh.cloud/clientless/#url=https://geovannamoura-com-br-275547.hostingersite.com/painel",
     description:
-      "Landing focada em conversão, com narrativa crescente, prova social e CTAs bem posicionados para venda de um curso de autoajuda.",
+      "Painel desenvolvido durante minha trajetória na Algar, focado em clientes premium, com visão de carteira, contratos, chamados e contatos importantes para follow-up.",
     focus:
-      "Guiar o visitante por uma história clara até a ação final, equilibrando texto, visual e credibilidade.",
+      "Organizar o dia a dia do consultor com uma visão clara da carteira, facilitando priorização de incidentes, registro de interações e acompanhamento dos clientes mais estratégicos.",
     testimonial:
-      "Entregou com qualidade e excelência o que eu pedi, recomendo!",
-    client: "Adauan",
-    stack: ["HTML5", "CSS3", "JavaScript", "Responsividade", "SEO básico"],
-    desktopImage: "/img/projects/homemnovo-desktop.png",
-    mobileImage: "/img/projects/homemnovo-mobile.png",
+      "A Geovanna ajudou a transformar um fluxo complexo em algo bem mais visual e utilizável no dia a dia do time. Evoluímos muito a visão de carteira com esse painel.",
+    client: "Fabrício (Agile Master)",
+    stack: [
+      "React",
+      "TypeScript",
+      "APIs REST",
+      "UI/UX",
+      "Tabelas responsivas",
+      "Filtros avançados",
+    ],
+    desktopImages: [
+      "/img/projects/crmdesktopum.jpg",
+      "/img/projects/crmdesktopdois.jpg",
+      "/img/projects/crmdesktoptres.jpg",
+      "/img/projects/crmdesktopquatro.jpg",
+      "/img/projects/crmdesktopcinco.jpg",
+      "/img/projects/crmdesktopseis.jpg",
+      "/img/projects/crmdesktopsete.jpg",
+      "/img/projects/crmdesktopoito.jpg",
+    ],
+    mobileImages: ["/img/projects/crmmobile.jpeg"],
     featured: true,
   },
   {
-    title: "Landing Page – Curso Agropecuário",
-    type: "Landing page",
-    segment: "Educação · Público rural",
-    url: "https://www.primeprofissoes.com.br/",
+    title: "Riconomia – Calculadoras Financeiras",
+    type: "Site institucional · Calculadoras",
+    segment: "Finanças · Contabilidade",
+    url: "http://riconomia.com.br/",
     description:
-      "Página objetiva para cursos da área agropecuária, com comunicação clara, layout direto e botão de ação sempre visível.",
+      "Plataforma de apoio para contadores e profissionais de finanças, com simuladores práticos para diferentes cenários do dia a dia.",
     focus:
-      "Falar com um público diverso de forma simples, sem perder credibilidade e captação de leads.",
+      "Oferecer calculadoras intuitivas para salário líquido, 13º, aposentadoria, financiamentos e custo de vida, com resultados claros e linguagem acessível. Incluido Dark/Clean Mode para adaptabilidade e conforto visual do usuário.",
     testimonial:
-      "Muito rápida e muito proativa, sempre disposta a fazer os ajustes que eu peço. Trabalharei com ela novamente.",
-    client: "Debora",
-    stack: ["HTML5", "CSS3", "JavaScript", "Layout mobile-first"],
-    desktopImage: "/img/projects/primeprofissoes-desktop.png",
-    mobileImage: "/img/projects/primeprofissoes-mobile.png",
+      "O site ficou com a clareza que eu precisava para os cálculos. Ficou do jeitinho que eu pedi, As simulações ficaram fáceis de usar até para quem não é da área. A Geovanna é muito atenciosa e escutou todos os detalhes que solicitei, recomendo!!",
+    client: "Carlos H.",
+    stack: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Calculadoras JS",
+      "UX focada em clareza",
+    ],
+    desktopImages: [
+      "/img/projects/riconomiadesktopclaroum.jpeg",
+      "/img/projects/riconomiadesktopclarodois.jpeg",
+      "/img/projects/riconomiadesktopclarotres.jpeg",
+      "/img/projects/riconomiadesktopdarkum.jpeg",
+      "/img/projects/riconomiadesktopdarkdois.jpeg",
+    ],
+    mobileImages: ["/img/projects/riconomiamobile.jpeg"],
+    featured: true,
+  },
+  {
+    title: "Ignis – Terapia Cognitiva",
+    type: "Site institucional",
+    segment: "Saúde · Psicologia",
+    url: "https://ignisoficial.com.br/",
+    description:
+      "Site leve e acolhedor para atendimento psicológico remoto, com foco em transmitir confiança e aproximar a marca das pessoas.",
+    focus:
+      "Explicar de forma simples como funciona o atendimento, reforçar credibilidade e facilitar o agendamento de sessões com poucos cliques.",
+    testimonial:
+      "Representou bem a minha marca e tudo que eu pedi. A Geovanna esteve à disposição para escutar e colocar em prática. O resultado ficou muito profissional.",
+    client: "Rafael",
+    stack: ["WordPress", "HTML5", "CSS3", "UX focada em confiança"],
+    desktopImages: [
+      "/img/projects/ignisdesktopum.jpg",
+      "/img/projects/ignisdesktopdois.jpg",
+      "/img/projects/ignisdesktoptres.jpg",
+      "/img/projects/ignisdesktopquatro.jpg",
+      "/img/projects/ignisdesktopcinco.jpg",
+      "/img/projects/ignisdesktopseis.jpg",
+      "/img/projects/ignisdesktopsete.jpg",
+    ],
+    mobileImages: [
+      "/img/projects/ignismobile.jpeg",
+    ],
     featured: true,
   },
   {
@@ -41,100 +96,29 @@ export const projects = [
     segment: "Serviços · Gráfica rápida",
     url: "https://graficaloprint.com.br",
     description:
-      "Site completo com páginas internas, lista de serviços e formulário de orçamento integrado ao fluxo da gráfica.",
+      "Site completo com páginas internas, apresentação de serviços, exibição de portfólio visual e formulário de orçamento alinhado ao fluxo da gráfica.",
     focus:
-      "Deixar claro o que a gráfica oferece e facilitar o contato do cliente com poucos cliques.",
+      "Deixar claro o que a gráfica oferece, mostrar trabalhos realizados e facilitar o contato do cliente com poucos cliques.",
     testimonial:
-      "Muito rápida na entrega e muito proativa. Foi muito profissional e surpreendeu as minhas expectativas.",
+      "Muito rápida na entrega e muito proativa. Foi muito profissional e superou minhas expectativas no visual e na organização do site.",
     client: "Douglas",
     stack: ["WordPress", "HTML5", "CSS3", "Formulário de orçamento"],
-    desktopImage: "/img/projects/graficaloprint-desktop.png",
-    mobileImage: "/img/projects/graficaloprint-mobile.png",
-    featured: true,
-  },
-  {
-    title: "Site – Método IPD",
-    type: "Site de curso",
-    segment: "Desenvolvimento pessoal · Infoproduto",
-    url: "https://www.adauangoes.com.br/metodoipd",
-    description:
-      "Site para método de desenvolvimento pessoal, com blocos de conteúdo bem definidos, foco em captura de leads e integração com CRM.",
-    focus:
-      "Explicar o método de forma leve e guiada, mantendo o CTA presente durante toda a página.",
-    testimonial:
-      "Muito comprometida com cada etapa do projeto. Entregou exatamente como eu pedi e ainda deu sugestões para melhorar.",
-    client: "Adauan",
-    stack: ["HTML5", "CSS3", "GreatPages", "Integração com CRM"],
-    desktopImage: "/img/projects/metodoipd-desktop.png",
-    mobileImage: "/img/projects/metodoipd-mobile.png",
-    featured: true,
-  },
-  {
-    title: "Site – Ignis (Terapia Cognitiva)",
-    type: "Site institucional",
-    segment: "Saúde · Psicologia",
-    url: "https://ignisoficial.com.br/",
-    description:
-      "Site leve e acolhedor para atendimento psicológico remoto, com identidade visual calma e navegação simples.",
-    focus:
-      "Transmitir confiança e acolhimento, explicando como funciona o atendimento e como agendar sem fricção.",
-    testimonial:
-      "Representou bem a minha marca, e tudo que eu pedi, ela esteve à disposição para escutar e pôr em prática no projeto.",
-    client: "Rafael",
-    stack: ["WordPress", "HTML5", "CSS3", "UX focada em confiança"],
-    desktopImage: "/img/projects/ignis-desktop.png",
-    mobileImage: "/img/projects/ignis-mobile.png",
-    featured: true,
-  },
-  {
-    title: "Use Dude – Loja de Moda Feminina",
-    type: "Loja / catálogo",
-    segment: "Moda · Pequeno negócio",
-    url: null,
-    description:
-      "Projeto com estética inspirada no Instagram, carrossel de peças, depoimento da fundadora e foco total em navegação mobile.",
-    focus:
-      "Refletir a personalidade da marca e facilitar a descoberta das peças e o contato com a loja.",
-    testimonial:
-      "Ela foi muito solícita, escutou todos os meus áudios, todos os detalhes que eu pedi, e colocou em produção o site para a minha loja.",
-    client: "Maria Eduarda",
-    stack: ["HTML5", "CSS3", "JavaScript", "Mobile-first"],
-    desktopImage: "/img/projects/usedude-desktop.png",
-    mobileImage: "/img/projects/usedude-mobile.png",
-    featured: true,
-  },
-
-  // Acadêmicos / extras
-  {
-    title: "Quiz Interativo (JavaScript)",
-    type: "Projeto acadêmico",
-    segment: "Front-end · Lógica",
-    url: null,
-    description:
-      "Quiz com lógica de perguntas e respostas, pontuação automática e feedback visual ao final.",
-    focus:
-      "Trabalhar lógica de programação no front-end, mantendo a experiência leve e divertida.",
-    testimonial: null,
-    client: null,
-    stack: ["HTML5", "CSS3", "JavaScript"],
-    desktopImage: "/img/projects/quiz-desktop.png",
-    mobileImage: "/img/projects/quiz-mobile.png",
-    featured: false,
-  },
-  {
-    title: "Sistema de Biblioteca (Python)",
-    type: "Projeto acadêmico",
-    segment: "Backend · Visualização de dados",
-    url: null,
-    description:
-      "Sistema com cadastro de livros, listagem por gênero e geração de gráficos com Matplotlib.",
-    focus:
-      "Organizar informações e visualizar dados de forma simples para fins acadêmicos.",
-    testimonial: null,
-    client: null,
-    stack: ["Python", "Lógica de programação", "Matplotlib"],
-    desktopImage: "/img/projects/biblioteca-desktop.png",
-    mobileImage: "/img/projects/biblioteca-mobile.png",
-    featured: false,
+    desktopImages: [
+      "/img/projects/graficadesktopum.jpg",
+      "/img/projects/graficadesktopdois.jpg",
+      "/img/projects/graficadesktoptres.jpg",
+      "/img/projects/graficadesktopquatro.jpg",
+      "/img/projects/graficadesktopcinco.jpg",
+      "/img/projects/graficadesktopseis.jpg",
+      "/img/projects/graficadesktopsete.jpg",
+    ],
+    mobileImages: [
+      "/img/projects/graficamobileum.jpeg",
+      "/img/projects/graficamobiledois.jpeg",
+      "/img/projects/graficamobiletres.jpeg",
+      "/img/projects/graficamobilequatro.jpeg",
+      "/img/projects/graficamobilecinco.jpeg",
+    ],
+    featured: true,  
   },
 ] satisfies Project[];

@@ -146,7 +146,7 @@ const Technologies: React.FC = () => {
       className="
         relative
         bg-[#F8F5F2] dark:bg-[#0A0A0A]
-        py-20 lg:py-24
+        py-16 sm:py-18 lg:py-24
         overflow-hidden
         transition-colors
       "
@@ -168,23 +168,24 @@ const Technologies: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-left md:text-center mb-14 md:mb-16"
+          className="text-left md:text-center mb-10 sm:mb-14 md:mb-16"
         >
-          <p className="text-xs md:text-sm tracking-[0.22em] uppercase text-[#A6806A] dark:text-[#CFC6BB] font-montserrat mb-4 transition-colors">
+          <p className="text-[11px] sm:text-xs md:text-sm tracking-[0.22em] uppercase text-[#A6806A] dark:text-[#CFC6BB] font-montserrat mb-3 sm:mb-4 transition-colors">
             Stack & Tecnologias
           </p>
 
-          <h2 className="font-montserrat text-3xl md:text-4xl lg:text-[38px] font-bold text-[#5B4636] dark:text-[#F3EEE7] transition-colors">
+          <h2 className="font-montserrat text-2xl sm:text-3xl md:text-4xl lg:text-[38px] font-bold text-[#5B4636] dark:text-[#F3EEE7] transition-colors">
             Uma stack pensada para{" "}
             <span className="text-[#C07A50]">produtos digitais incríveis.</span>
           </h2>
 
-          <div className="mt-5 h-[3px] w-28 md:w-32 rounded-full bg-[#C07A50] md:mx-auto" />
+          <div className="mt-4 sm:mt-5 h-[3px] w-24 sm:w-28 md:w-32 rounded-full bg-[#C07A50] md:mx-auto" />
 
-          <p className="mt-5 max-w-3xl text-sm md:text-base lg:text-[15px] text-[#7A6A5B] dark:text-[#CFC6BB] md:mx-auto leading-relaxed transition-colors">
-            Mais do que listar ferramentas, aqui estão os conjuntos de tecnologias que
-            realmente uso no dia a dia para tirar ideias do papel e manter produtos
-            perfeitos, performáticos e agradáveis para o usuário.
+          <p className="mt-4 sm:mt-5 max-w-3xl text-[13px] sm:text-sm md:text-base lg:text-[15px] text-[#7A6A5B] dark:text-[#CFC6BB] md:mx-auto leading-relaxed transition-colors">
+            Mais do que listar ferramentas, aqui estão os conjuntos de
+            tecnologias que realmente uso no dia a dia para tirar ideias do
+            papel e manter produtos estáveis, performáticos e agradáveis para o
+            usuário.
           </p>
         </motion.div>
 
@@ -195,7 +196,8 @@ const Technologies: React.FC = () => {
             border border-[#E0D3C2]/70 dark:border-white/10
             bg-white/85 dark:bg-[#0F0D0B]
             backdrop-blur-xl
-            px-4 sm:px-6 md:px-8 py-6 md:py-8
+            px-3 sm:px-5 md:px-8
+            py-5 sm:py-6 md:py-8
             shadow-[0_18px_45px_rgba(0,0,0,0.06)] dark:shadow-[0_22px_55px_rgba(0,0,0,0.55)]
             transition-colors
           "
@@ -205,7 +207,12 @@ const Technologies: React.FC = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6"
+            className="
+              grid grid-cols-1
+              md:grid-cols-2
+              xl:grid-cols-3
+              gap-4 sm:gap-5 md:gap-6
+            "
           >
             {stackGroups.map((group) => (
               <motion.div
@@ -220,13 +227,13 @@ const Technologies: React.FC = () => {
                   group relative
                   rounded-2xl
                   bg-[#F8F5F2] dark:bg-[#14110E]
-                  p-5 md:p-6
+                  p-4 sm:p-5 md:p-6
                   shadow-sm dark:shadow-[0_14px_40px_rgba(0,0,0,0.55)]
                   cursor-default
                   transition-all
                   border border-[#E0D3C2]/60 dark:border-white/10
                   hover:border-[#C07A50]/70
-                  flex flex-col gap-4
+                  flex flex-col gap-3 sm:gap-4
                 "
               >
                 <div className="absolute -top-[1px] left-6 right-6 h-[3px] rounded-full bg-[#C07A50] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -235,12 +242,12 @@ const Technologies: React.FC = () => {
                   <span className="text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-[#A6806A] dark:text-[#CFC6BB] font-montserrat transition-colors">
                     {group.area}
                   </span>
-                  <h3 className="text-sm md:text-base lg:text-[17px] font-montserrat font-semibold text-[#5B4636] dark:text-[#F3EEE7] transition-colors">
+                  <h3 className="text-sm sm:text-[15px] md:text-base lg:text-[17px] font-montserrat font-semibold text-[#5B4636] dark:text-[#F3EEE7] transition-colors">
                     {group.title}
                   </h3>
                 </div>
 
-                <p className="text-xs md:text-sm text-[#7A6A5B] dark:text-[#CFC6BB] leading-relaxed font-montserrat transition-colors">
+                <p className="text-[12px] sm:text-xs md:text-sm text-[#7A6A5B] dark:text-[#CFC6BB] leading-relaxed font-montserrat transition-colors">
                   {group.description}
                 </p>
 
@@ -251,7 +258,7 @@ const Technologies: React.FC = () => {
                       key={item.name}
                       className="
                         inline-flex items-center gap-2
-                        px-3 py-1.5 rounded-full
+                        px-2.5 sm:px-3 py-1.5 rounded-full
                         bg-white dark:bg-[#0F0D0B]
                         border border-[#E0D3C2] dark:border-white/10
                         shadow-[0_4px_12px_rgba(0,0,0,0.06)] dark:shadow-none
@@ -259,12 +266,12 @@ const Technologies: React.FC = () => {
                       "
                     >
                       <span
-                        className="w-6 h-6 rounded-full flex items-center justify-center"
+                        className="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center"
                         style={{ backgroundColor: item.color }}
                       >
-                        <item.Icon className="text-[13px] text-white" />
+                        <item.Icon className="text-[11px] sm:text-[13px] text-white" />
                       </span>
-                      <span className="text-[11px] md:text-xs font-montserrat text-[#5B4636] dark:text-[#F3EEE7] transition-colors">
+                      <span className="text-[10px] sm:text-[11px] md:text-xs font-montserrat text-[#5B4636] dark:text-[#F3EEE7] transition-colors">
                         {item.name}
                       </span>
                     </div>
