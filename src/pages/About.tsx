@@ -1,10 +1,61 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
-import { aboutService } from "../services/aboutService";
-import type { AboutTrait } from "../types/about";
+import { Code, Palette, Users, Award } from "lucide-react";
+import { useLanguage } from "../i18n";
 
 const About: React.FC = () => {
-  const traits = useMemo<AboutTrait[]>(() => aboutService.getTraits(), []);
+  const { t } = useLanguage();
+
+  const traits = useMemo(
+    () => [
+      {
+        icon: Palette,
+        title: t.about.traits.uiUx.title,
+        description: t.about.traits.uiUx.description,
+      },
+      {
+        icon: Code,
+        title: t.about.traits.responsive.title,
+        description: t.about.traits.responsive.description,
+      },
+      {
+        icon: Users,
+        title: t.about.traits.userExperience.title,
+        description: t.about.traits.userExperience.description,
+      },
+      {
+        icon: Award,
+        title: t.about.traits.seoQuality.title,
+        description: t.about.traits.seoQuality.description,
+      },
+      {
+        icon: Code,
+        title: t.about.traits.productVision.title,
+        description: t.about.traits.productVision.description,
+      },
+      {
+        icon: Users,
+        title: t.about.traits.teamwork.title,
+        description: t.about.traits.teamwork.description,
+      },
+    ],
+    [t]
+  );
+
+  // Helper to render paragraph with highlights
+  const renderParagraph = (text: string) => {
+    const parts = text.split(/<highlight>|<\/highlight>/);
+    return parts.map((part, index) => {
+      if (index % 2 === 1) {
+        return (
+          <span key={index} className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
+            {part}
+          </span>
+        );
+      }
+      return part;
+    });
+  };
 
   return (
     <section
@@ -56,7 +107,7 @@ const About: React.FC = () => {
             >
               <img
                 src="/img/perfilcorp.jpeg"
-                alt="Foto profissional de Geovanna Moura"
+                alt={t.about.photoAlt}
                 className="w-full h-full object-cover"
               />
               {/* brilho sutil no dark */}
@@ -65,7 +116,7 @@ const About: React.FC = () => {
           </div>
 
           <h2 className="font-montserrat text-2xl sm:text-3xl md:text-5xl font-bold tracking-[0.12em] text-[#5B4636] dark:text-[#F3EEE7]">
-            SOBRE MIM
+            {t.about.title}
           </h2>
 
           <div className="mt-4 sm:mt-5 h-1.5 w-32 sm:w-40 md:w-52 rounded-full bg-[#C07A50]" />
@@ -89,89 +140,14 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             className="space-y-5 sm:space-y-6 max-w-3xl lg:pl-4 xl:pl-8"
           >
-            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
-              Olá, eu sou a{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                Geovanna Moura
-              </span>
-              , desenvolvedora front-end, e fico muito feliz que você esteja
-              conhecendo meu portfólio. Sou natural de Santos - SP e atualmente
-              moro em Uberlândia - MG, nascida em{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                12/03/2002
-              </span>
-              .
-            </p>
-
-            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
-              Atuo há mais de{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                2 anos com desenvolvimento front-end
-              </span>{" "}
-              em uma empresa certificada{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                GPTW
-              </span>{" "}
-              e curso{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                Engenharia de Software
-              </span>
-              , unindo prática diária em produto com uma base acadêmica sólida
-              na área.
-            </p>
-
-            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
-              Me encontrei na tecnologia porque consigo unir lógica, design e
-              pessoas no mesmo lugar. Gosto bastante de pegar{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                fluxos e regras de negócio complexas
-              </span>{" "}
-              e traduzir tudo isso em telas claras, objetivas e fáceis de
-              entender. Sempre penso em como a pessoa que usa o sistema vai se
-              sentir ao interagir com cada parte da interface, principalmente em
-              contextos de sistemas de gestão e rotinas críticas do dia a dia.
-            </p>
-
-            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
-              Tenho uma paixão especial por{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                soluções digitais responsivas e bem estruturadas
-              </span>
-              . Gosto de ver a interface se comportando bem em diferentes
-              dispositivos e resoluções e de cuidar de detalhes de{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                UI e UX
-              </span>
-              , como hierarquia visual, microinterações, mensagens de erro e
-              estados vazios. Esses pequenos cuidados fazem o usuário sentir que
-              o produto foi realmente pensado para a rotina dele.
-            </p>
-
-            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
-              No dia a dia, não fico só no código. Gosto de estar próxima de
-              quem usa o sistema e de quem define as regras de negócio.
-              Participo de testes manuais e colaboro como{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                QA em fluxos importantes
-              </span>
-              , sempre tentando antecipar problemas, validar cenários de uso
-              real e garantir que o que vai para produção esteja estável e faça
-              sentido na prática.
-            </p>
-
-            <p className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]">
-              Fora do ambiente corporativo, também desenvolvo projetos para{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                pequenos negócios e empreendedores
-              </span>
-              . Crio sites e landing pages com foco em clareza, responsividade e{" "}
-              <span className="font-semibold text-[#5B4636] dark:text-[#F3EEE7]">
-                boas práticas de SEO
-              </span>
-              , sempre com visão de produto: entender o objetivo daquela página,
-              o público que vai acessar e como a interface pode apoiar o negócio
-              a crescer de forma profissional.
-            </p>
+            {t.about.paragraphs.map((paragraph, index) => (
+              <p
+                key={index}
+                className="text-[14px] sm:text-base md:text-lg font-montserrat leading-relaxed text-[#7A6A5B] dark:text-[#CFC6BB]"
+              >
+                {renderParagraph(paragraph)}
+              </p>
+            ))}
           </motion.div>
 
           {/* Coluna direita – cards */}

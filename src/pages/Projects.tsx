@@ -2,14 +2,17 @@ import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ProjectCard";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/projects";
 import { projectsService } from "@/services/projectsService";
 import type { Project } from "@/types/project";
+import { useLanguage } from "@/i18n";
 
 const Projects: React.FC = () => {
+  const { t, language } = useLanguage();
+
   const featuredProjects = useMemo<Project[]>(
-    () => projectsService.getFeaturedProjects(projects, 6),
-    []
+    () => projectsService.getFeaturedProjects(getProjects(language), 6),
+    [language]
   );
 
   const handleViewMore = (): void => {
@@ -58,21 +61,18 @@ const Projects: React.FC = () => {
               transition-colors
             "
           >
-            Cases & Projetos
+            {t.projects.subtitle}
           </p>
 
           <h2 className="font-montserrat text-2xl sm:text-3xl md:text-4xl lg:text-[38px] font-bold text-[#5B4636] dark:text-[#F8F5F2] leading-snug transition-colors">
-            Projetos que já{" "}
-            <span className="text-[#C07A50]">saíram do papel.</span>
+            {t.projects.title}{" "}
+            <span className="text-[#C07A50]">{t.projects.titleHighlight}</span>
           </h2>
 
           <div className="mt-4 h-[3px] sm:h-[4px] w-full max-w-[200px] sm:max-w-[260px] md:max-w-[384px] rounded-full bg-[#C07A50] md:mx-auto" />
 
           <p className="mt-4 sm:mt-5 max-w-3xl text-[13px] sm:text-sm md:text-base lg:text-[15px] text-[#7A6A5B] dark:text-[#D1BFA3] md:mx-auto leading-relaxed transition-colors">
-            Uma mistura de sites, landing pages e projetos entregues aos meus
-            clientes. Todos com foco em interface clara, responsiva e pensada
-            para quem realmente usa — com bastante carinho e atenção aos
-            detalhes.
+            {t.projects.description}
           </p>
         </motion.div>
 
@@ -104,7 +104,7 @@ const Projects: React.FC = () => {
               max-w-[420px]
             "
           >
-            Ver mais projetos
+            {t.projects.viewMore}
           </Button>
         </div>
       </div>

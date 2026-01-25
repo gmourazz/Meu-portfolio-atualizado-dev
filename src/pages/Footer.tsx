@@ -2,13 +2,17 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { Button } from "../components/ui/button";
 import { useToast } from "../components/ui/use-toast";
-import { getPrivacyPolicyToast } from "../services/footerService";
+import { useLanguage } from "../i18n";
 
 const Footer: React.FC = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handlePolicyClick = (): void => {
-    toast(getPrivacyPolicyToast());
+    toast({
+      title: t.footer.privacyPolicy,
+      description: t.footer.privacyDescription,
+    });
   };
 
   return (
@@ -46,10 +50,10 @@ const Footer: React.FC = () => {
                 className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
               />
               <p className="font-montserrat text-[12px] sm:text-[13px] md:text-sm text-[#E9DFD2] dark:text-[#F3EEE8] leading-snug text-left">
-                © 2025 Geovanna Moura. Todos os direitos reservados.
+                © {t.footer.copyright}
                 <br />
                 <span className="font-montserrat text-[10px] sm:text-[11px] md:text-[12px] text-[#D1BFA3] dark:text-white/60">
-                  Desenvolvido com carinho, café e código.
+                  {t.footer.madeWith}
                 </span>
               </p>
             </div>
@@ -73,7 +77,7 @@ const Footer: React.FC = () => {
               sm:min-w-[210px]
             "
           >
-            Política de Privacidade
+            {t.footer.privacyPolicy}
           </Button>
         </motion.div>
       </div>

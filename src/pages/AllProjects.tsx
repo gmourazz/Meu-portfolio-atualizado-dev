@@ -1,23 +1,27 @@
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/projects";
 import { projectsService } from "@/services/projectsService";
 import { ProjectCard } from "@/components/ProjectCard";
 import type { Project } from "@/types/project";
+import { useLanguage } from "@/i18n";
 
 const AllProjects: React.FC = () => {
+  const { t, language } = useLanguage();
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
 
+  const projects = useMemo(() => getProjects(language), [language]);
+
   const allTechs = useMemo<string[]>(
     () => projectsService.getAllTechs(projects),
-    []
+    [projects]
   );
 
   const filteredProjects = useMemo<Project[]>(
     () => projectsService.filterByTechs(projects, selectedTechs),
-    [selectedTechs]
+    [projects, selectedTechs]
   );
 
   const toggleTech = (tech: string): void => {

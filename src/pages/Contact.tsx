@@ -1,11 +1,18 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "../components/ui/button";
-import { buildWhatsappMessage, getSocialLinks } from "../services/contactService";
+import { getSocialLinks } from "../services/contactService";
 import type { SocialLink } from "../types/contact";
+import { useLanguage } from "../i18n";
 
 const Contact: React.FC = () => {
-  const whatsappMessage = useMemo(() => buildWhatsappMessage(), []);
+  const { t } = useLanguage();
+
+  const whatsappMessage = useMemo(
+    () => encodeURIComponent(t.contact.whatsappMessage),
+    [t]
+  );
+
   const socialLinks = useMemo<SocialLink[]>(
     () => getSocialLinks(whatsappMessage),
     [whatsappMessage]
@@ -57,17 +64,16 @@ const Contact: React.FC = () => {
               -mt-8 sm:-mt-10 md:-mt-12
             "
           >
-            Contato
+            {t.contact.subtitle}
           </p>
 
           <h2 className="font-montserrat text-2xl xs:text-[28px] sm:text-3xl md:text-4xl lg:text-[36px] font-bold text-[#F8F5F2] dark:text-[#F8F5F2] leading-tight">
-            Vamos tirar o seu{" "}
-            <span className="text-[#C07A50]">projeto do papel?</span>
+            {t.contact.title}{" "}
+            <span className="text-[#C07A50]">{t.contact.titleHighlight}</span>
           </h2>
 
           <p className="mt-4 max-w-2xl text-[13px] xs:text-sm md:text-base text-[#E9DFD2] dark:text-[#CFC7BE] md:mx-auto leading-relaxed">
-            Se você chegou até aqui que tal criamos algo juntos? Me chama por
-            onde for mais confortável pra você e me conta um pouco da sua ideia.
+            {t.contact.description}
           </p>
         </motion.div>
 
@@ -91,20 +97,15 @@ const Contact: React.FC = () => {
             "
           >
             <p className="text-[10px] xs:text-xs md:text-sm uppercase tracking-[0.18em] text-[#D1BFA3] dark:text-[#D1BFA3] font-montserrat mb-3">
-              Canal principal
+              {t.contact.mainChannel}
             </p>
 
             <h3 className="font-montserrat text-lg xs:text-xl md:text-2xl font-semibold text-[#F8F5F2] dark:text-[#F8F5F2] mb-3 leading-tight">
-              Fale comigo direto no WhatsApp
+              {t.contact.whatsappTitle}
             </h3>
 
             <p className="text-[13px] xs:text-sm md:text-[15px] text-[#E9DFD2] dark:text-[#CFC7BE] leading-relaxed mb-5">
-              O WhatsApp é o melhor lugar para falarmos sobre{" "}
-              <span className="font-semibold text-[#F8F5F2]">
-                projetos, freelas
-              </span>{" "}
-              e ideias que você queira tirar do papel. Clique no botão abaixo e
-              vamos construir algo incrível juntos.
+              {t.contact.whatsappDescription}
             </p>
 
             <Button
@@ -137,7 +138,7 @@ const Contact: React.FC = () => {
               >
                 {WaIcon ? <WaIcon className="w-5 h-5 sm:w-6 sm:h-6" /> : null}
                 <span className="whitespace-normal leading-snug text-center">
-                  Fale comigo no WhatsApp
+                  {t.contact.whatsappButton}
                 </span>
               </a>
             </Button>
@@ -153,7 +154,7 @@ const Contact: React.FC = () => {
             viewport={{ once: true }}
           >
             <p className="text-[10px] xs:text-xs md:text-sm uppercase tracking-[0.18em] text-[#D1BFA3] dark:text-[#D1BFA3] font-montserrat mb-4">
-              Outras formas de contato
+              {t.contact.otherContacts}
             </p>
 
             {/* mobile/tablet = pílulas lado a lado; desktop = lista vertical como antes */}
@@ -215,7 +216,7 @@ const Contact: React.FC = () => {
                     </div>
 
                     <span className="text-[10px] md:text-xs font-montserrat text-[#E9DFD2]/80 dark:text-white/55 hidden sm:inline shrink-0">
-                      Abrir em nova aba →
+                      {t.contact.openNewTab} →
                     </span>
                   </motion.a>
                 );
@@ -223,10 +224,7 @@ const Contact: React.FC = () => {
             </div>
 
             <p className="mt-5 text-[11px] md:text-xs text-[#E9DFD2]/70 dark:text-white/55 font-montserrat leading-relaxed">
-              Pode me chamar para{" "}
-              <span className="font-semibold text-[#F8F5F2]">
-                freelas pontuais, projetos maiores ou oportunidades de time
-              </span>
+              {t.contact.freelanceNote}
             </p>
           </motion.div>
         </div>

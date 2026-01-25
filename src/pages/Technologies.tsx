@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   FaReact,
@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { SiTypescript, SiVite } from "react-icons/si";
 import { FiDatabase, FiSearch, FiTrendingUp, FiLayout } from "react-icons/fi";
+import { useLanguage } from "../i18n";
 
 type IconComponent = React.ComponentType<{ className?: string }>;
 
@@ -52,74 +53,73 @@ const TailwindIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 
 const Technologies: React.FC = () => {
-  const stackGroups: StackGroup[] = [
-    {
-      title: "Front-end SPA & Componentização",
-      area: "Aplicações React",
-      description:
-        "Construo interfaces reativas, organizadas em componentes, com foco em clareza, performance e manutenção a longo prazo.",
-      items: [
-        { name: "React", Icon: FaReact as unknown as IconComponent, color: "#61DAFB" },
-        { name: "TypeScript", Icon: SiTypescript as unknown as IconComponent, color: "#3178C6" },
-        { name: "JavaScript", Icon: FaJsSquare as unknown as IconComponent, color: "#F7DF1E" },
-        { name: "Vite", Icon: SiVite as unknown as IconComponent, color: "#646CFF" },
-      ],
-    },
-    {
-      title: "Estrutura, Estilo & UI",
-      area: "UI · UX · Layout",
-      description:
-        "Penso em hierarquia visual, espaçamentos e leitura fluida, sempre alinhando beleza com uso real no dia a dia.",
-      items: [
-        { name: "HTML5", Icon: FaHtml5 as unknown as IconComponent, color: "#E34F26" },
-        { name: "CSS3", Icon: FaCss3Alt as unknown as IconComponent, color: "#1572B6" },
-        { name: "Tailwind", Icon: TailwindIcon, color: "#38BDF8" },
-        { name: "UI/UX", Icon: FiLayout as unknown as IconComponent, color: "#C07A50" },
-      ],
-    },
-    {
-      title: "Back-end, Dados & Automação",
-      area: "APIs & Lógica",
-      description:
-        "Integro o front com APIs REST, modelo dados e uso automações para apoiar regras de negócio e rotinas internas.",
-      items: [
-        { name: "Node.js", Icon: FaNodeJs as unknown as IconComponent, color: "#339933" },
-        { name: "SQL", Icon: FiDatabase as unknown as IconComponent, color: "#5B4636" },
-        { name: "Python", Icon: FaPython as unknown as IconComponent, color: "#3776AB" },
-      ],
-    },
-    {
-      title: "SEO, Performance & Qualidade",
-      area: "Qualidade de entrega",
-      description:
-        "Cuido de estrutura semântica, tempo de carregamento e boas práticas para entregar páginas rápidas e encontráveis.",
-      items: [
-        { name: "SEO", Icon: FiSearch as unknown as IconComponent, color: "#C07A50" },
-        { name: "Otimização", Icon: FiTrendingUp as unknown as IconComponent, color: "#A6806A" },
-        { name: "Acessibilidade", Icon: FiLayout as unknown as IconComponent, color: "#5B4636" },
-      ],
-    },
-    {
-      title: "Design & Prototipação",
-      area: "Produto & Experiência",
-      description:
-        "Trabalho próxima de UI/UX, validando fluxos, protótipos e microinterações antes de ir para código.",
-      items: [
-        { name: "Figma", Icon: FaFigma as unknown as IconComponent, color: "#F24E1E" },
-        { name: "UI Kits", Icon: FiLayout as unknown as IconComponent, color: "#A6806A" },
-      ],
-    },
-    {
-      title: "Git, Fluxo de Código & Colaboração",
-      area: "Dev Workflow",
-      description:
-        "Atuo com versionamento, branches, PRs e revisão, garantindo organização e histórico limpo dos projetos.",
-      items: [
-        { name: "Git", Icon: FaGitAlt as unknown as IconComponent, color: "#F05033" },
-        { name: "GitHub", Icon: FaGithub as unknown as IconComponent, color: "#181717" },
-      ],
-    },
-  ];
+  const { t } = useLanguage();
+
+  const stackGroups: StackGroup[] = useMemo(
+    () => [
+      {
+        title: t.technologies.groups.frontend.title,
+        area: t.technologies.groups.frontend.area,
+        description: t.technologies.groups.frontend.description,
+        items: [
+          { name: "React", Icon: FaReact as unknown as IconComponent, color: "#61DAFB" },
+          { name: "TypeScript", Icon: SiTypescript as unknown as IconComponent, color: "#3178C6" },
+          { name: "JavaScript", Icon: FaJsSquare as unknown as IconComponent, color: "#F7DF1E" },
+          { name: "Vite", Icon: SiVite as unknown as IconComponent, color: "#646CFF" },
+        ],
+      },
+      {
+        title: t.technologies.groups.uiStyle.title,
+        area: t.technologies.groups.uiStyle.area,
+        description: t.technologies.groups.uiStyle.description,
+        items: [
+          { name: "HTML5", Icon: FaHtml5 as unknown as IconComponent, color: "#E34F26" },
+          { name: "CSS3", Icon: FaCss3Alt as unknown as IconComponent, color: "#1572B6" },
+          { name: "Tailwind", Icon: TailwindIcon, color: "#38BDF8" },
+          { name: "UI/UX", Icon: FiLayout as unknown as IconComponent, color: "#C07A50" },
+        ],
+      },
+      {
+        title: t.technologies.groups.backend.title,
+        area: t.technologies.groups.backend.area,
+        description: t.technologies.groups.backend.description,
+        items: [
+          { name: "Node.js", Icon: FaNodeJs as unknown as IconComponent, color: "#339933" },
+          { name: "SQL", Icon: FiDatabase as unknown as IconComponent, color: "#5B4636" },
+          { name: "Python", Icon: FaPython as unknown as IconComponent, color: "#3776AB" },
+        ],
+      },
+      {
+        title: t.technologies.groups.seoPerformance.title,
+        area: t.technologies.groups.seoPerformance.area,
+        description: t.technologies.groups.seoPerformance.description,
+        items: [
+          { name: "SEO", Icon: FiSearch as unknown as IconComponent, color: "#C07A50" },
+          { name: t.technologies.items.optimization, Icon: FiTrendingUp as unknown as IconComponent, color: "#A6806A" },
+          { name: t.technologies.items.accessibility, Icon: FiLayout as unknown as IconComponent, color: "#5B4636" },
+        ],
+      },
+      {
+        title: t.technologies.groups.design.title,
+        area: t.technologies.groups.design.area,
+        description: t.technologies.groups.design.description,
+        items: [
+          { name: "Figma", Icon: FaFigma as unknown as IconComponent, color: "#F24E1E" },
+          { name: t.technologies.items.uiKits, Icon: FiLayout as unknown as IconComponent, color: "#A6806A" },
+        ],
+      },
+      {
+        title: t.technologies.groups.git.title,
+        area: t.technologies.groups.git.area,
+        description: t.technologies.groups.git.description,
+        items: [
+          { name: "Git", Icon: FaGitAlt as unknown as IconComponent, color: "#F05033" },
+          { name: "GitHub", Icon: FaGithub as unknown as IconComponent, color: "#181717" },
+        ],
+      },
+    ],
+    [t]
+  );
 
   const container = {
     hidden: { opacity: 0, y: 20 },
@@ -171,21 +171,18 @@ const Technologies: React.FC = () => {
           className="text-left md:text-center mb-10 sm:mb-14 md:mb-16"
         >
           <p className="text-[11px] sm:text-xs md:text-sm tracking-[0.22em] uppercase text-[#A6806A] dark:text-[#CFC6BB] font-montserrat mb-3 sm:mb-4 transition-colors">
-            Stack & Tecnologias
+            {t.technologies.subtitle}
           </p>
 
           <h2 className="font-montserrat text-2xl sm:text-3xl md:text-4xl lg:text-[38px] font-bold text-[#5B4636] dark:text-[#F3EEE7] transition-colors">
-            Uma stack pensada para{" "}
-            <span className="text-[#C07A50]">produtos digitais incríveis.</span>
+            {t.technologies.title}{" "}
+            <span className="text-[#C07A50]">{t.technologies.titleHighlight}</span>
           </h2>
 
           <div className="mt-4 sm:mt-5 h-[3px] w-24 sm:w-28 md:w-32 rounded-full bg-[#C07A50] md:mx-auto" />
 
           <p className="mt-4 sm:mt-5 max-w-3xl text-[13px] sm:text-sm md:text-base lg:text-[15px] text-[#7A6A5B] dark:text-[#CFC6BB] md:mx-auto leading-relaxed transition-colors">
-            Mais do que listar ferramentas, aqui estão os conjuntos de
-            tecnologias que realmente uso no dia a dia para tirar ideias do
-            papel e manter produtos estáveis, performáticos e agradáveis para o
-            usuário.
+            {t.technologies.description}
           </p>
         </motion.div>
 

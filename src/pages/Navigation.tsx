@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import type { NavSectionId } from "@/types/navigation";
@@ -9,6 +9,7 @@ import {
   getVisibleNavItems,
   handleNavClick,
 } from "@/services/navigationService";
+import { useLanguage, Language, languageFullNames } from "@/i18n";
 
 type ThemeMode = "light" | "dark";
 const THEME_KEY = "theme_mode";
@@ -36,6 +37,10 @@ const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [theme, setTheme] = useState<ThemeMode>("light");
+  const [langMenuOpen, setLangMenuOpen] = useState(false);
+
+  const langMenuRef = useRef<HTMLDivElement>(null);
+  const { language, setLanguage, t } = useLanguage();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -89,11 +94,47 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // close language menu on click outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (langMenuRef.current && !langMenuRef.current.contains(e.target as Node)) {
+        setLangMenuOpen(false);
+      }
+    };
+    if (langMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [langMenuOpen]);
+
+  const languages: { code: Language; label: string }[] = [
+    { code: "pt-BR", label: languageFullNames["pt-BR"] },
+    { code: "en", label: languageFullNames["en"] },
+    { code: "es", label: languageFullNames["es"] },
+  ];
+
+  const handleLanguageChange = (lang: Language) => {
+    setLanguage(lang);
+    setLangMenuOpen(false);
+  };
+
   const navItems = useMemo(() => getDefaultNavItems(), []);
   const visibleNavItems = useMemo(
     () => getVisibleNavItems(location.pathname, navItems),
     [location.pathname, navItems]
   );
+
+  // Map nav item IDs to translated labels
+  const getNavLabel = (id: NavSectionId): string => {
+    const labelMap: Record<NavSectionId, string> = {
+      hero: t.nav.home,
+      about: t.nav.about,
+      technologies: t.nav.technologies,
+      projects: t.nav.projects,
+      contact: t.nav.contact,
+    };
+    return labelMap[id] || id;
+  };
 
   const closeMenu = () => setIsOpen(false);
 
@@ -139,7 +180,7 @@ const Navigation: React.FC = () => {
                   hover:bg-black/5 dark:hover:bg-white/5
                   active:bg-black/10 dark:active:bg-white/10
                 "
-                aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+                aria-label={isOpen ? t.nav.closeMenu : t.nav.openMenu}
                 aria-expanded={isOpen}
                 aria-controls="mobile-nav"
               >
@@ -157,8 +198,8 @@ const Navigation: React.FC = () => {
                 select-none
                 -ml-1 sm:-ml-4 lg:-ml-6
               "
-              aria-label="Ir para a página inicial"
-              title="Início"
+              aria-label={t.nav.goToHome}
+              title={t.nav.home}
             >
               <img
                 src={logoSrc}
@@ -185,16 +226,17 @@ const Navigation: React.FC = () => {
                   transition-colors duration-300
                 "
               >
-                {item.label}
+                {getNavLabel(item.id)}
               </motion.button>
             ))}
           </div>
 
-          {/* Theme toggle 
-              - mobile: logo + toggle ficam próximos (ml-3)
-              - desktop: toggle vai pra direita (md:ml-auto)
+          {/* Theme toggle + Language selector
+              - mobile: logo + toggles ficam próximos (ml-3)
+              - desktop: toggles vão pra direita (md:ml-auto)
           */}
-          <div className="flex items-center ml-3 md:ml-auto">
+          <div className="flex items-center gap-2 ml-3 md:ml-auto">
+            {/* Theme toggle */}
             <motion.button
               type="button"
               onClick={toggleTheme}
@@ -209,9 +251,9 @@ const Navigation: React.FC = () => {
                 transition-all
               "
               aria-label={
-                theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"
+                theme === "dark" ? t.nav.lightMode : t.nav.darkMode
               }
-              title={theme === "dark" ? "Modo claro" : "Modo escuro"}
+              title={theme === "dark" ? t.nav.lightMode : t.nav.darkMode}
             >
               {theme === "dark" ? (
                 <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-[#E9DFD2]" />
@@ -219,6 +261,74 @@ const Navigation: React.FC = () => {
                 <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B4636]" />
               )}
             </motion.button>
+
+            {/* Language selector */}
+            <div className="relative" ref={langMenuRef}>
+              <motion.button
+                type="button"
+                onClick={() => setLangMenuOpen((prev) => !prev)}
+                whileTap={{ scale: 0.96 }}
+                className="
+                  inline-flex items-center justify-center shrink-0
+                  h-8 w-8 sm:h-10 sm:w-10 rounded-full
+                  border border-black/10 dark:border-white/10
+                  bg-white/70 dark:bg-[#14100E]/70
+                  shadow-[0_10px_25px_rgba(15,10,5,0.08)] dark:shadow-[0_14px_35px_rgba(0,0,0,0.35)]
+                  hover:bg-white dark:hover:bg-[#14100E]
+                  transition-all
+                "
+                aria-label={t.nav.changeLanguage}
+                title={t.nav.changeLanguage}
+              >
+                <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B4636] dark:text-[#E9DFD2]" />
+              </motion.button>
+
+              {/* Dropdown */}
+              <AnimatePresence>
+                {langMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="
+                      absolute right-0 top-full mt-2 z-50
+                      min-w-[140px]
+                      rounded-xl overflow-hidden
+                      border border-[#D1BFA3]/60 dark:border-white/10
+                      bg-[#F8F5F2]/95 dark:bg-[#14100E]/95
+                      shadow-[0_12px_35px_rgba(0,0,0,0.15)] dark:shadow-[0_14px_40px_rgba(0,0,0,0.45)]
+                      backdrop-blur-md
+                    "
+                  >
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        type="button"
+                        onClick={() => handleLanguageChange(lang.code)}
+                        className={`
+                          w-full text-left px-4 py-2.5
+                          font-montserrat text-[13px]
+                          transition-colors
+                          ${
+                            language === lang.code
+                              ? "bg-[#C07A50]/15 text-[#C07A50] dark:bg-[#C07A50]/20 dark:text-[#C07A50]"
+                              : "text-[#5B4636] dark:text-[#E9DFD2] hover:bg-[#E9DFD2] dark:hover:bg-white/5"
+                          }
+                        `}
+                      >
+                        {lang.label}
+                        {lang.code === "pt-BR" && (
+                          <span className="ml-1 text-[10px] text-[#A6806A] dark:text-[#D1BFA3]">
+                            (Padrao)
+                          </span>
+                        )}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
@@ -229,7 +339,7 @@ const Navigation: React.FC = () => {
           <>
             <motion.button
               type="button"
-              aria-label="Fechar menu"
+              aria-label={t.nav.closeMenu}
               onClick={closeMenu}
               className="fixed inset-0 z-40 md:hidden cursor-default"
               initial={{ opacity: 0 }}
@@ -261,7 +371,7 @@ const Navigation: React.FC = () => {
               >
                 <div className="px-4 py-3 border-b border-[#D1BFA3]/40 dark:border-white/10">
                   <p className="text-[11px] tracking-[0.22em] uppercase font-montserrat text-[#A6806A] dark:text-[#D1BFA3]">
-                    Navegação
+                    {t.nav.navigation}
                   </p>
                 </div>
 
@@ -281,7 +391,7 @@ const Navigation: React.FC = () => {
                         transition-colors
                       "
                     >
-                      {item.label}
+                      {getNavLabel(item.id)}
                     </motion.button>
                   ))}
                 </div>

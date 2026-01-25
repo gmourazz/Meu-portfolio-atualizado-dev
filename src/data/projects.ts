@@ -1,25 +1,22 @@
 import type { Project } from "@/types/project";
+import type { Language } from "@/i18n";
+import { projectTranslations } from "./projectTranslations";
 
-export const projects = [
+type ProjectBase = Omit<Project, "title" | "type" | "segment" | "description" | "focus" | "testimonial" | "client"> & {
+  translationKey: string;
+};
+
+const projectsBase: ProjectBase[] = [
   {
-    title: "CRM Premium – Gestão de Carteira",
-    type: "Sistema web · CRM",
-    segment: "Telecom · Clientes premium",
+    translationKey: "crm",
     url: "https://bootstrap.rbi.skyhigh.cloud/clientless/#url=https://geovannamoura-com-br-275547.hostingersite.com/painel",
-    description:
-      "Painel desenvolvido durante minha trajetória na Algar, focado em clientes premium, com visão de carteira, contratos, chamados e contatos importantes para follow-up.",
-    focus:
-      "Organizar o dia a dia do consultor com uma visão clara da carteira, facilitando priorização de incidentes, registro de interações e acompanhamento dos clientes mais estratégicos.",
-    testimonial:
-      "A Geovanna ajudou a transformar um fluxo complexo em algo bem mais visual e utilizável no dia a dia do time. Evoluímos muito a visão de carteira com esse painel.",
-    client: "Fabrício (Agile Master)",
     stack: [
       "React",
       "TypeScript",
       "APIs REST",
       "UI/UX",
-      "Tabelas responsivas",
-      "Filtros avançados",
+      "Responsive Tables",
+      "Advanced Filters",
     ],
     desktopImages: [
       "/img/projects/crmdesktopum.jpg",
@@ -35,23 +32,14 @@ export const projects = [
     featured: true,
   },
   {
-    title: "Riconomia – Calculadoras Financeiras",
-    type: "Site institucional · Calculadoras",
-    segment: "Finanças · Contabilidade",
+    translationKey: "riconomia",
     url: "http://riconomia.com.br/",
-    description:
-      "Plataforma de apoio para contadores e profissionais de finanças, com simuladores práticos para diferentes cenários do dia a dia.",
-    focus:
-      "Oferecer calculadoras intuitivas para salário líquido, 13º, aposentadoria, financiamentos e custo de vida, com resultados claros e linguagem acessível. Incluido Dark/Clean Mode para adaptabilidade e conforto visual do usuário.",
-    testimonial:
-      "O site ficou com a clareza que eu precisava para os cálculos. Ficou do jeitinho que eu pedi, As simulações ficaram fáceis de usar até para quem não é da área. A Geovanna é muito atenciosa e escutou todos os detalhes que solicitei, recomendo!!",
-    client: "Carlos H.",
     stack: [
       "HTML5",
       "CSS3",
       "JavaScript",
-      "Calculadoras JS",
-      "UX focada em clareza",
+      "JS Calculators",
+      "UX focused on clarity",
     ],
     desktopImages: [
       "/img/projects/riconomiadesktopclaroum.jpeg",
@@ -64,18 +52,9 @@ export const projects = [
     featured: true,
   },
   {
-    title: "Ignis – Terapia Cognitiva",
-    type: "Site institucional",
-    segment: "Saúde · Psicologia",
+    translationKey: "ignis",
     url: "https://ignisoficial.com.br/",
-    description:
-      "Site leve e acolhedor para atendimento psicológico remoto, com foco em transmitir confiança e aproximar a marca das pessoas.",
-    focus:
-      "Explicar de forma simples como funciona o atendimento, reforçar credibilidade e facilitar o agendamento de sessões com poucos cliques.",
-    testimonial:
-      "Representou bem a minha marca e tudo que eu pedi. A Geovanna esteve à disposição para escutar e colocar em prática. O resultado ficou muito profissional.",
-    client: "Rafael",
-    stack: ["WordPress", "HTML5", "CSS3", "UX focada em confiança"],
+    stack: ["WordPress", "HTML5", "CSS3", "UX focused on trust"],
     desktopImages: [
       "/img/projects/ignisdesktopum.jpg",
       "/img/projects/ignisdesktopdois.jpg",
@@ -85,24 +64,13 @@ export const projects = [
       "/img/projects/ignisdesktopseis.jpg",
       "/img/projects/ignisdesktopsete.jpg",
     ],
-    mobileImages: [
-      "/img/projects/ignismobile.jpeg",
-    ],
+    mobileImages: ["/img/projects/ignismobile.jpeg"],
     featured: true,
   },
   {
-    title: "Site – Gráfica Rápida",
-    type: "Site institucional",
-    segment: "Serviços · Gráfica rápida",
+    translationKey: "grafica",
     url: "https://graficaloprint.com.br",
-    description:
-      "Site completo com páginas internas, apresentação de serviços, exibição de portfólio visual e formulário de orçamento alinhado ao fluxo da gráfica.",
-    focus:
-      "Deixar claro o que a gráfica oferece, mostrar trabalhos realizados e facilitar o contato do cliente com poucos cliques.",
-    testimonial:
-      "Muito rápida na entrega e muito proativa. Foi muito profissional e superou minhas expectativas no visual e na organização do site.",
-    client: "Douglas",
-    stack: ["WordPress", "HTML5", "CSS3", "Formulário de orçamento"],
+    stack: ["WordPress", "HTML5", "CSS3", "Quote Form"],
     desktopImages: [
       "/img/projects/graficadesktopum.jpg",
       "/img/projects/graficadesktopdois.jpg",
@@ -119,6 +87,39 @@ export const projects = [
       "/img/projects/graficamobilequatro.jpeg",
       "/img/projects/graficamobilecinco.jpeg",
     ],
-    featured: true,  
+    featured: true,
   },
-] satisfies Project[];
+];
+
+export function getProjects(language: Language): Project[] {
+  return projectsBase.map((project) => {
+    const translation = projectTranslations[project.translationKey]?.[language];
+    if (!translation) {
+      // Fallback to English
+      const fallback = projectTranslations[project.translationKey]?.["en"];
+      return {
+        ...project,
+        title: fallback?.title || project.translationKey,
+        type: fallback?.type || "",
+        segment: fallback?.segment || "",
+        description: fallback?.description || "",
+        focus: fallback?.focus || "",
+        testimonial: fallback?.testimonial || "",
+        client: fallback?.client || "",
+      };
+    }
+    return {
+      ...project,
+      title: translation.title,
+      type: translation.type,
+      segment: translation.segment,
+      description: translation.description,
+      focus: translation.focus,
+      testimonial: translation.testimonial,
+      client: translation.client,
+    };
+  });
+}
+
+// For backwards compatibility - exports default English projects
+export const projects = getProjects("en");

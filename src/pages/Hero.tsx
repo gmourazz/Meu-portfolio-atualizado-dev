@@ -1,12 +1,50 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { Button } from "../components/ui/button";
-import { getHeroContent } from "../services/heroService";
 import { scrollToSection } from "../services/scrollService";
-import type { HeroChip } from "../types/hero";
+import { useLanguage } from "../i18n";
 
 const Hero: React.FC = () => {
-  const content = React.useMemo(() => getHeroContent(), []);
+  const { t } = useLanguage();
+
+  const chips = React.useMemo(
+    () => [
+      { iconClass: "lni lni-code", label: t.hero.chips.reactStack },
+      { iconClass: "lni lni-layout", label: t.hero.chips.uiUx },
+      { iconClass: "lni lni-users", label: t.hero.chips.userExperience },
+      { iconClass: "lni lni-network", label: t.hero.chips.apiIntegration },
+      { iconClass: "lni lni-ruler-pencil", label: t.hero.chips.codeQuality },
+      { iconClass: "lni lni-mobile", label: t.hero.chips.accessibility },
+    ],
+    [t]
+  );
+
+  const codeBlock = React.useMemo(
+    () => `const dev = {
+  name: "Geovanna Moura",
+  role: "${t.hero.codeBlock.role}",
+  stack: [
+    "JavaScript",
+    "CSS3",
+    "HTML5",
+    "React.js",
+    "Tailwind CSS",
+    "Node.js",
+    "TypeScript",
+    "Python",
+  ],
+  principles: [
+    "${t.hero.codeBlock.principles[0]}",
+    "${t.hero.codeBlock.principles[1]}",
+    "${t.hero.codeBlock.principles[2]}",
+  ],
+  currentlyExploring: [
+    "${t.hero.codeBlock.currentlyExploring[0]}",
+    "${t.hero.codeBlock.currentlyExploring[1]}",
+  ],
+};`,
+    [t]
+  );
 
   const handleScroll = (sectionId: string): void => {
     scrollToSection(sectionId);
@@ -71,7 +109,7 @@ const Hero: React.FC = () => {
               "
             >
               <span className="w-2.5 h-2.5 rounded-full bg-[#C07A50]" />
-              <span>{content.badgeText}</span>
+              <span>{t.hero.badge}</span>
             </div>
 
             {/* Título + texto */}
@@ -83,8 +121,8 @@ const Hero: React.FC = () => {
                   text-[#5B4636] dark:text-[#E9DFD2]
                 "
               >
-                {content.titlePrefix}{" "}
-                <span className="text-[#C07A50]">{content.titleHighlight}</span>
+                {t.hero.titlePrefix}{" "}
+                <span className="text-[#C07A50]">{t.hero.titleHighlight}</span>
               </h1>
 
               <p
@@ -95,14 +133,14 @@ const Hero: React.FC = () => {
                   text-[#7A6A5B] dark:text-[#CBBCA8]
                 "
               >
-                {content.description}
+                {t.hero.description}
               </p>
             </div>
 
             {/* Botões */}
             <div className="flex flex-wrap gap-4 lg:mt-2">
               <Button
-                onClick={() => handleScroll(content.primaryCta.targetId)}
+                onClick={() => handleScroll("projects")}
                 className="
                   bg-[#C07A50] hover:bg-[#5B4636]
                   text-[#F8F5F2]
@@ -115,11 +153,11 @@ const Hero: React.FC = () => {
                 "
                 size="lg"
               >
-                {content.primaryCta.label}
+                {t.hero.primaryCta}
               </Button>
 
               <Button
-                onClick={() => handleScroll(content.secondaryCta.targetId)}
+                onClick={() => handleScroll("contact")}
                 variant="outline"
                 className="
                   border
@@ -137,13 +175,13 @@ const Hero: React.FC = () => {
                 "
                 size="lg"
               >
-                {content.secondaryCta.label}
+                {t.hero.secondaryCta}
               </Button>
             </div>
 
             {/* Chips desktop */}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-3 max-w-3xl 2xl:max-w-5xl lg:mt-2 2xl:mt-4">
-              {content.chips.map((chip: HeroChip) => (
+              {chips.map((chip) => (
                 <span
                   key={chip.label}
                   className="
@@ -212,13 +250,13 @@ const Hero: React.FC = () => {
                   <span className="w-2.5 h-2.5 rounded-full bg-[#A6806A]" />
                 </div>
                 <span className="text-[11px] font-montserrat text-[#7A6A5B] dark:text-[#CBBCA8]">
-                  {content.codeFilename}
+                  portfolio/hero.tsx
                 </span>
               </div>
 
               {/* Código fake (desktop) */}
               <div className="p-4 md:p-6 bg-[#1E1A17] text-[#F8F5F2] font-mono text-[11px] md:text-xs leading-relaxed overflow-auto min-h-[260px]">
-                <pre>{content.codeBlock}</pre>
+                <pre>{codeBlock}</pre>
               </div>
             </div>
           </motion.div>
@@ -249,7 +287,7 @@ const Hero: React.FC = () => {
                   "
                 >
                   <span className="w-2 h-2 rounded-full bg-[#C07A50]" />
-                  <span>{content.badgeText}</span>
+                  <span>{t.hero.badge}</span>
                 </div>
 
                 {/* Título + descrição */}
@@ -262,9 +300,9 @@ const Hero: React.FC = () => {
                       text-[#5B4636] dark:text-[#E9DFD2]
                     "
                   >
-                    {content.titlePrefix}{" "}
+                    {t.hero.titlePrefix}{" "}
                     <span className="text-[#C07A50]">
-                      {content.titleHighlight}
+                      {t.hero.titleHighlight}
                     </span>
                   </h1>
 
@@ -276,14 +314,14 @@ const Hero: React.FC = () => {
                       text-[#7A6A5B] dark:text-[#CBBCA8]
                     "
                   >
-                    {content.description}
+                    {t.hero.description}
                   </p>
                 </div>
 
                 {/* Botões lado a lado no mobile */}
                 <div className="flex flex-row gap-3 mt-1">
                   <Button
-                    onClick={() => handleScroll(content.primaryCta.targetId)}
+                    onClick={() => handleScroll("projects")}
                     className="
                       bg-[#C07A50] hover:bg-[#5B4636]
                       text-[#F8F5F2]
@@ -298,13 +336,11 @@ const Hero: React.FC = () => {
                     "
                     size="lg"
                   >
-                    {content.primaryCta.label}
+                    {t.hero.primaryCta}
                   </Button>
 
                   <Button
-                    onClick={() =>
-                      handleScroll(content.secondaryCta.targetId)
-                    }
+                    onClick={() => handleScroll("contact")}
                     variant="outline"
                     className="
                       border
@@ -324,7 +360,7 @@ const Hero: React.FC = () => {
                     "
                     size="lg"
                   >
-                    {content.secondaryCta.label}
+                    {t.hero.secondaryCta}
                   </Button>
                 </div>
               </div>
@@ -365,7 +401,7 @@ const Hero: React.FC = () => {
                       <span className="w-2 h-2 rounded-full bg-[#A6806A]" />
                     </div>
                     <span className="text-[8px] font-montserrat text-[#7A6A5B] dark:text-[#CBBCA8]">
-                      {content.codeFilename}
+                      portfolio/hero.tsx
                     </span>
                   </div>
 
@@ -380,7 +416,7 @@ const Hero: React.FC = () => {
                     "
                   >
                     <pre className="whitespace-pre-wrap break-words">
-                      {content.codeBlock}
+                      {codeBlock}
                     </pre>
                   </div>
                 </div>
@@ -389,7 +425,7 @@ const Hero: React.FC = () => {
 
             {/* Chips abaixo – 2/linha e 3/linha em xs+ */}
             <div className="mt-4 grid grid-cols-2 xs:grid-cols-3 gap-2.5 max-w-xl">
-              {content.chips.map((chip: HeroChip) => (
+              {chips.map((chip) => (
                 <span
                   key={chip.label}
                   className="
