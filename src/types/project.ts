@@ -1,16 +1,20 @@
-export type Project = {
+export interface ProjectLink {
+  name: string;
+  url: string;
+}
+
+export interface Project {
   title: string;
-  type?: string;
-  segment?: string;
-  url?: string | null;
+  type: string;
+  segment: string;
+  url: string;
   description: string;
-  focus?: string | null;
-  testimonial?: string | null;
-  client?: string | null;
-  stack?: string[];
-  desktopImage?: string;
-  mobileImage?: string;
-  desktopImages?: string[];
-  mobileImages?: string[];
-  featured?: boolean;
-};
+  focus: string;
+  testimonial: string;
+  client: string;
+  stack: string[];
+  desktopImages: string[];
+  mobileImages: string[];
+  featured: boolean;
+  links?: ProjectLink[];
+}

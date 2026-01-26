@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@/types/project";
+import { useLanguage } from "@/i18n";
 
 type ProjectCardProps = {
   project: Project;
@@ -10,6 +11,7 @@ type ProjectCardProps = {
 };
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
+  const { t } = useLanguage();
   const hasLink = !!project.url;
   const hasTestimonial = !!project.testimonial;
   const isEven = index % 2 === 0;
@@ -191,7 +193,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             >
               <p className="text-[11px] md:text-xs leading-relaxed">
                 <span className="font-semibold uppercase tracking-[0.16em] text-[10px] block mb-1 text-[#5B4636] dark:text-[#D1BFA3]">
-                  Foco do projeto
+                  {t.projects.projectFocus}
                 </span>
                 <span className="text-[#7A6A5B] dark:text-[#E9DFD2]">
                   {project.focus}
@@ -266,7 +268,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                 "
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
-                Ver projeto online
+                {t.projects.viewOnline}
               </Button>
             </div>
           )}

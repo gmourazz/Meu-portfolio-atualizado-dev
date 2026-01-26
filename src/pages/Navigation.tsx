@@ -9,7 +9,7 @@ import {
   getVisibleNavItems,
   handleNavClick,
 } from "@/services/navigationService";
-import { useLanguage, Language, languageFullNames } from "@/i18n";
+import { useLanguage, Language, languageFullNames, languageLabels } from "@/i18n";
 
 type ThemeMode = "light" | "dark";
 const THEME_KEY = "theme_mode";
@@ -269,8 +269,8 @@ const Navigation: React.FC = () => {
                 onClick={() => setLangMenuOpen((prev) => !prev)}
                 whileTap={{ scale: 0.96 }}
                 className="
-                  inline-flex items-center justify-center shrink-0
-                  h-8 w-8 sm:h-10 sm:w-10 rounded-full
+                  inline-flex items-center justify-center gap-1 shrink-0
+                  h-8 px-2.5 sm:h-10 sm:px-3 rounded-full
                   border border-black/10 dark:border-white/10
                   bg-white/70 dark:bg-[#14100E]/70
                   shadow-[0_10px_25px_rgba(15,10,5,0.08)] dark:shadow-[0_14px_35px_rgba(0,0,0,0.35)]
@@ -280,7 +280,10 @@ const Navigation: React.FC = () => {
                 aria-label={t.nav.changeLanguage}
                 title={t.nav.changeLanguage}
               >
-                <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-[#5B4636] dark:text-[#E9DFD2]" />
+                <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#5B4636] dark:text-[#E9DFD2]" />
+                <span className="font-montserrat text-[10px] sm:text-[11px] font-semibold text-[#5B4636] dark:text-[#E9DFD2] tracking-wide">
+                  {languageLabels[language]}
+                </span>
               </motion.button>
 
               {/* Dropdown */}
@@ -310,18 +313,17 @@ const Navigation: React.FC = () => {
                           w-full text-left px-4 py-2.5
                           font-montserrat text-[13px]
                           transition-colors
+                          flex items-center justify-between
                           ${
                             language === lang.code
-                              ? "bg-[#C07A50]/15 text-[#C07A50] dark:bg-[#C07A50]/20 dark:text-[#C07A50]"
+                              ? "bg-[#C07A50]/15 text-[#C07A50] dark:bg-[#C07A50]/20 dark:text-[#C07A50] font-semibold"
                               : "text-[#5B4636] dark:text-[#E9DFD2] hover:bg-[#E9DFD2] dark:hover:bg-white/5"
                           }
                         `}
                       >
-                        {lang.label}
-                        {lang.code === "pt-BR" && (
-                          <span className="ml-1 text-[10px] text-[#A6806A] dark:text-[#D1BFA3]">
-                            (Padrao)
-                          </span>
+                        <span>{lang.label}</span>
+                        {language === lang.code && (
+                          <span className="text-[#C07A50] text-base">✓</span>
                         )}
                       </button>
                     ))}

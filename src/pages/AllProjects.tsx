@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
-import { getProjects } from "@/data/projects";
+import { getTranslatedProjects } from "@/data/projects";
 import { projectsService } from "@/services/projectsService";
 import { ProjectCard } from "@/components/ProjectCard";
 import type { Project } from "@/types/project";
@@ -12,21 +12,23 @@ const AllProjects: React.FC = () => {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
 
-  const projects = useMemo(() => getProjects(language), [language]);
+  const allProjects = useMemo(() => {
+    return getTranslatedProjects(language);
+  }, [language]);
 
   const allTechs = useMemo<string[]>(
-    () => projectsService.getAllTechs(projects),
-    [projects]
+    () => projectsService.getAllTechs(allProjects),
+    [allProjects],
   );
 
   const filteredProjects = useMemo<Project[]>(
-    () => projectsService.filterByTechs(projects, selectedTechs),
-    [projects, selectedTechs]
+    () => projectsService.filterByTechs(allProjects, selectedTechs),
+    [allProjects, selectedTechs],
   );
 
   const toggleTech = (tech: string): void => {
     setSelectedTechs((prev) =>
-      prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech]
+      prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech],
     );
   };
 
@@ -64,28 +66,18 @@ const AllProjects: React.FC = () => {
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl text-left">
               <p className="text-[10px] xs:text-xs md:text-sm tracking-[0.24em] xs:tracking-[0.28em] uppercase text-[#A6806A] dark:text-[#D1BFA3] font-montserrat mb-2.5 sm:mb-3">
-                Meus Projetos
+                {t.allProjects.subtitle}
               </p>
 
               <h1 className="font-montserrat text-2xl xs:text-[26px] sm:text-3xl md:text-4xl lg:text-[40px] font-bold text-[#5B4636] dark:text-[#F8F5F2] leading-tight">
-                Todos os <span className="text-[#C07A50]">meus projetos</span>
-                <br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>
-                em um só lugar.
+                {t.allProjects.title}{" "}
+                <span className="text-[#C07A50]">{t.allProjects.titleHighlight}</span>
               </h1>
 
               <div className="mt-3 sm:mt-4 h-[3px] w-full max-w-[220px] sm:max-w-[280px] md:max-w-[360px] rounded-full bg-[#C07A50]" />
 
               <p className="mt-4 sm:mt-5 text-[13px] xs:text-sm md:text-base lg:text-[15px] text-[#7A6A5B] dark:text-[#CFC7BE] leading-relaxed">
-                Aqui você encontra uma visão mais completa dos projetos que já
-                desenvolvi para os meus clientes: one pages, landing pages e
-                experiências digitais focadas em UX/UI, performance e resultado.
-                Alguns projetos podem estar temporariamente fora do ar, pois
-                muitos clientes desativam páginas por motivos pessoais ou
-                estratégicos, mas mantenho esses cases aqui pela relevância que
-                tiveram na minha trajetória. Este portfólio é um recorte dos
-                projetos mais importantes; tenho outros trabalhos menores que
-                não foram listados para manter o foco nos cases principais.
+                {t.allProjects.description}
               </p>
             </div>
 
@@ -113,7 +105,7 @@ const AllProjects: React.FC = () => {
                 "
               >
                 <SlidersHorizontal className="w-4 h-4" />
-                Filtros
+                {t.allProjects.filters}
                 {selectedTechs.length > 0 && (
                   <span
                     className="
@@ -151,7 +143,7 @@ const AllProjects: React.FC = () => {
                 >
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span className="text-[11px] font-montserrat tracking-[0.14em] uppercase text-[#A6806A] dark:text-[#D1BFA3]">
-                      Filtrar por tecnologias
+                      {t.allProjects.filterByTech}
                     </span>
 
                     {selectedTechs.length > 0 && (
@@ -161,7 +153,7 @@ const AllProjects: React.FC = () => {
                         className="flex items-center gap-1 text-[11px] text-[#C07A50] hover:text-[#A9623A] dark:hover:text-[#F8F5F2]"
                       >
                         <X className="w-3 h-3" />
-                        Limpar
+                        {t.allProjects.clear}
                       </button>
                     )}
                   </div>
@@ -200,7 +192,7 @@ const AllProjects: React.FC = () => {
 
                     {allTechs.length === 0 && (
                       <p className="text-[11px] text-[#7A6A5B] dark:text-[#CFC7BE]">
-                        Nenhuma tecnologia cadastrada ainda.
+                        {t.allProjects.noTechsYet}
                       </p>
                     )}
                   </div>
@@ -233,14 +225,14 @@ const AllProjects: React.FC = () => {
               "
             >
               <p className="font-montserrat text-sm md:text-base text-[#5B4636] dark:text-[#F8F5F2]">
-                Nenhum projeto encontrado com os filtros selecionados.
+                {t.allProjects.noProjectsFound}
               </p>
               <button
                 type="button"
                 onClick={clearFilters}
                 className="mt-3 text-[12px] text-[#C07A50] font-montserrat underline underline-offset-2 hover:text-[#A9623A] dark:hover:text-[#F8F5F2]"
               >
-                Limpar filtros e ver todos
+                {t.allProjects.clearAndViewAll}
               </button>
             </div>
           )}

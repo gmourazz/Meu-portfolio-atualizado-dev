@@ -97,6 +97,40 @@ type TranslationKeys = {
     titleHighlight: string;
     description: string;
     viewMore: string;
+    projectFocus: string;
+    viewOnline: string;
+    items: {
+      mundoPro: {
+        title: string;
+        description: string;
+        focus: string;
+        testimonial: string;
+      };
+      crm: {
+        title: string;
+        description: string;
+        focus: string;
+        testimonial: string;
+      };
+      riconomia: {
+        title: string;
+        description: string;
+        focus: string;
+        testimonial: string;
+      };
+      ignis: {
+        title: string;
+        description: string;
+        focus: string;
+        testimonial: string;
+      };
+      grafica: {
+        title: string;
+        description: string;
+        focus: string;
+        testimonial: string;
+      };
+    };
   };
 
   // Contact
@@ -284,6 +318,55 @@ export const translations: Record<Language, TranslationKeys> = {
       description:
         "Uma mistura de sites, landing pages e projetos entregues aos meus clientes. Todos com foco em interface clara, responsiva e pensada para quem realmente usa - com bastante carinho e atencao aos detalhes.",
       viewMore: "Ver mais projetos",
+      projectFocus: "Foco do projeto",
+      viewOnline: "Ver projeto online",
+      items: {
+        mundoPro: {
+          title: "Mundo Pro - Landing Pages Dinamicas",
+          description:
+            "Desenvolvimento completo de 7 landing pages tematicas (Peru, Atacama, Italia, Eurotrip, Leste Europeu, Tailandia) + 1 site one page para a agencia de viagens Mundo Pro. Construido com React, TypeScript e Node.js, com foco em alta conversao atraves de redirecionamentos estrategicos para WhatsApp, seguindo fielmente o design do Figma.",
+          focus:
+            "Criar um sistema de landing pages leves e performaticas que direcionam diferentes publicos (destinos especificos) a contatos personalizados no WhatsApp. Cada pagina foi otimizada para mobile-first com responsividade perfeita, garantindo experiencia fluida em todos os dispositivos.",
+          testimonial:
+            "A Geovanna entregou um conjunto de landing pages que superou nossas expectativas. O cuidado com a responsividade e a implementacao dos redirecionamentos para WhatsApp otimizou significativamente nossa taxa de conversao. Todas as paginas funcionam perfeitamente em qualquer dispositivo.",
+        },
+        crm: {
+          title: "CRM Premium - Gestao de Carteira",
+          description:
+            "Painel desenvolvido durante minha trajetoria na Algar, focado em clientes premium, com visao de carteira, contratos, chamados e contatos importantes para follow-up.",
+          focus:
+            "Organizar o dia a dia do consultor com uma visao clara da carteira, facilitando priorizacao de incidentes, registro de interacoes e acompanhamento dos clientes mais estrategicos.",
+          testimonial:
+            "A Geovanna ajudou a transformar um fluxo complexo em algo bem mais visual e utilizavel no dia a dia do time. Evoluimos muito a visao de carteira com esse painel.",
+        },
+        riconomia: {
+          title: "Riconomia - Calculadoras Financeiras",
+          description:
+            "Plataforma de apoio para contadores e profissionais de financas, com simuladores praticos para diferentes cenarios do dia a dia.",
+          focus:
+            "Oferecer calculadoras intuitivas para salario liquido, 13o, aposentadoria, financiamentos e custo de vida, com resultados claros e linguagem acessivel. Incluido Dark/Clean Mode para adaptabilidade e conforto visual do usuario.",
+          testimonial:
+            "O site ficou com a clareza que eu precisava para os calculos. Ficou do jeitinho que eu pedi, As simulacoes ficaram faceis de usar ate para quem nao e da area. A Geovanna e muito atenciosa e escutou todos os detalhes que solicitei, recomendo!!",
+        },
+        ignis: {
+          title: "Ignis - Terapia Cognitiva",
+          description:
+            "Site leve e acolhedor para atendimento psicologico remoto, com foco em transmitir confianca e aproximar a marca das pessoas.",
+          focus:
+            "Explicar de forma simples como funciona o atendimento, reforcar credibilidade e facilitar o agendamento de sessoes com poucos cliques.",
+          testimonial:
+            "Representou bem a minha marca e tudo que eu pedi. A Geovanna esteve a disposicao para escutar e colocar em pratica. O resultado ficou muito profissional.",
+        },
+        grafica: {
+          title: "Site - Grafica Rapida",
+          description:
+            "Site completo com paginas internas, apresentacao de servicos, exibicao de portfolio visual e formulario de orcamento alinhado ao fluxo da grafica.",
+          focus:
+            "Deixar claro o que a grafica oferece, mostrar trabalhos realizados e facilitar o contato do cliente com poucos cliques.",
+          testimonial:
+            "Muito rapida na entrega e muito proativa. Foi muito profissional e superou minhas expectativas no visual e na organizacao do site.",
+        },
+      },
     },
     contact: {
       subtitle: "Contato",
@@ -470,6 +553,55 @@ export const translations: Record<Language, TranslationKeys> = {
       description:
         "A mix of websites, landing pages and projects delivered to my clients. All focused on clear, responsive interface designed for those who actually use it - with plenty of care and attention to detail.",
       viewMore: "View more projects",
+      projectFocus: "Project focus",
+      viewOnline: "View project online",
+      items: {
+        mundoPro: {
+          title: "Mundo Pro - Dynamic Landing Pages",
+          description:
+            "Complete development of 7 thematic landing pages (Peru, Atacama, Italy, Eurotrip, Eastern Europe, Thailand) + 1 one page site for the Mundo Pro travel agency. Built with React, TypeScript and Node.js, focused on high conversion through strategic redirects to WhatsApp, faithfully following the Figma design.",
+          focus:
+            "Create a system of light and performant landing pages that direct different audiences (specific destinations) to personalized WhatsApp contacts. Each page was optimized for mobile-first with perfect responsiveness, ensuring a smooth experience on all devices.",
+          testimonial:
+            "Geovanna delivered a set of landing pages that exceeded our expectations. The care with responsiveness and implementation of WhatsApp redirects significantly optimized our conversion rate. All pages work perfectly on any device.",
+        },
+        crm: {
+          title: "Premium CRM - Portfolio Management",
+          description:
+            "Dashboard developed during my journey at Algar, focused on premium clients, with portfolio view, contracts, tickets and important contacts for follow-up.",
+          focus:
+            "Organize the consultant's daily routine with a clear portfolio view, facilitating incident prioritization, interaction logging and monitoring of the most strategic clients.",
+          testimonial:
+            "Geovanna helped transform a complex flow into something much more visual and usable in the team's daily routine. We evolved a lot the portfolio view with this dashboard.",
+        },
+        riconomia: {
+          title: "Riconomia - Financial Calculators",
+          description:
+            "Support platform for accountants and finance professionals, with practical simulators for different daily scenarios.",
+          focus:
+            "Offer intuitive calculators for net salary, 13th salary, retirement, financing and cost of living, with clear results and accessible language. Includes Dark/Clean Mode for adaptability and user visual comfort.",
+          testimonial:
+            "The website has the clarity I needed for the calculations. It turned out exactly as I asked. The simulations are easy to use even for those outside the field. Geovanna is very attentive and listened to all the details I requested, I recommend!!",
+        },
+        ignis: {
+          title: "Ignis - Cognitive Therapy",
+          description:
+            "Light and welcoming website for remote psychological care, focused on conveying trust and bringing the brand closer to people.",
+          focus:
+            "Explain simply how the service works, reinforce credibility and make it easy to schedule sessions with just a few clicks.",
+          testimonial:
+            "It represented my brand and everything I asked for well. Geovanna was available to listen and put it into practice. The result was very professional.",
+        },
+        grafica: {
+          title: "Website - Quick Print Shop",
+          description:
+            "Complete website with internal pages, service presentation, visual portfolio display and quote form aligned with the print shop flow.",
+          focus:
+            "Make clear what the print shop offers, show completed work and make it easy for customers to get in touch with just a few clicks.",
+          testimonial:
+            "Very fast delivery and very proactive. Very professional and exceeded my expectations in the visual and organization of the website.",
+        },
+      },
     },
     contact: {
       subtitle: "Contact",
@@ -656,6 +788,55 @@ export const translations: Record<Language, TranslationKeys> = {
       description:
         "Una mezcla de sitios web, landing pages y proyectos entregados a mis clientes. Todos con enfoque en interfaz clara, responsiva y pensada para quien realmente usa - con mucho carino y atencion a los detalles.",
       viewMore: "Ver mas proyectos",
+      projectFocus: "Enfoque del proyecto",
+      viewOnline: "Ver proyecto online",
+      items: {
+        mundoPro: {
+          title: "Mundo Pro - Landing Pages Dinamicas",
+          description:
+            "Desarrollo completo de 7 landing pages tematicas (Peru, Atacama, Italia, Eurotrip, Este de Europa, Tailandia) + 1 sitio one page para la agencia de viajes Mundo Pro. Construido con React, TypeScript y Node.js, con enfoque en alta conversion a traves de redirecciones estrategicas a WhatsApp, siguiendo fielmente el diseno de Figma.",
+          focus:
+            "Crear un sistema de landing pages ligeras y performantes que dirijan diferentes publicos (destinos especificos) a contactos personalizados en WhatsApp. Cada pagina fue optimizada para mobile-first con responsividad perfecta, garantizando experiencia fluida en todos los dispositivos.",
+          testimonial:
+            "Geovanna entrego un conjunto de landing pages que supero nuestras expectativas. El cuidado con la responsividad y la implementacion de las redirecciones a WhatsApp optimizo significativamente nuestra tasa de conversion. Todas las paginas funcionan perfectamente en cualquier dispositivo.",
+        },
+        crm: {
+          title: "CRM Premium - Gestion de Cartera",
+          description:
+            "Panel desarrollado durante mi trayectoria en Algar, enfocado en clientes premium, con vision de cartera, contratos, tickets y contactos importantes para seguimiento.",
+          focus:
+            "Organizar el dia a dia del consultor con una vision clara de la cartera, facilitando la priorizacion de incidentes, registro de interacciones y seguimiento de los clientes mas estrategicos.",
+          testimonial:
+            "Geovanna ayudo a transformar un flujo complejo en algo mucho mas visual y utilizable en el dia a dia del equipo. Evolucionamos mucho la vision de cartera con este panel.",
+        },
+        riconomia: {
+          title: "Riconomia - Calculadoras Financieras",
+          description:
+            "Plataforma de apoyo para contadores y profesionales de finanzas, con simuladores practicos para diferentes escenarios del dia a dia.",
+          focus:
+            "Ofrecer calculadoras intuitivas para salario neto, aguinaldo, jubilacion, financiamientos y costo de vida, con resultados claros y lenguaje accesible. Incluye Dark/Clean Mode para adaptabilidad y confort visual del usuario.",
+          testimonial:
+            "El sitio quedo con la claridad que necesitaba para los calculos. Quedo exactamente como pedi. Las simulaciones son faciles de usar incluso para quienes no son del area. Geovanna es muy atenta y escucho todos los detalles que solicite, la recomiendo!!",
+        },
+        ignis: {
+          title: "Ignis - Terapia Cognitiva",
+          description:
+            "Sitio ligero y acogedor para atencion psicologica remota, enfocado en transmitir confianza y acercar la marca a las personas.",
+          focus:
+            "Explicar de forma simple como funciona la atencion, reforzar credibilidad y facilitar la programacion de sesiones con pocos clics.",
+          testimonial:
+            "Represento bien mi marca y todo lo que pedi. Geovanna estuvo disponible para escuchar y poner en practica. El resultado quedo muy profesional.",
+        },
+        grafica: {
+          title: "Sitio Web - Imprenta Rapida",
+          description:
+            "Sitio completo con paginas internas, presentacion de servicios, exhibicion de portafolio visual y formulario de presupuesto alineado al flujo de la imprenta.",
+          focus:
+            "Dejar claro lo que ofrece la imprenta, mostrar trabajos realizados y facilitar el contacto del cliente con pocos clics.",
+          testimonial:
+            "Muy rapida en la entrega y muy proactiva. Fue muy profesional y supero mis expectativas en el visual y la organizacion del sitio.",
+        },
+      },
     },
     contact: {
       subtitle: "Contacto",

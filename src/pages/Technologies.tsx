@@ -53,7 +53,7 @@ const TailwindIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 
 const Technologies: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const stackGroups: StackGroup[] = useMemo(
     () => [
@@ -164,6 +164,7 @@ const Technologies: React.FC = () => {
 
       <div className="w-full mx-auto max-w-6xl xl:max-w-7xl 2xl:max-w-none px-4 sm:px-8 lg:px-12 2xl:px-16">
         <motion.div
+          key={`tech-header-${language}`}
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
@@ -200,6 +201,7 @@ const Technologies: React.FC = () => {
           "
         >
           <motion.div
+            key={`tech-cards-${language}`}
             variants={container}
             initial="hidden"
             whileInView="show"
