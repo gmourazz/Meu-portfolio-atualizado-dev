@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
       { iconClass: "lni lni-ruler-pencil", label: t.hero.chips.codeQuality },
       { iconClass: "lni lni-mobile", label: t.hero.chips.accessibility },
     ],
-    [t]
+    [t],
   );
 
   const codeBlock = React.useMemo(
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
     "${t.hero.codeBlock.currentlyExploring[1]}",
   ],
 };`,
-    [t]
+    [t],
   );
 
   const handleScroll = (sectionId: string): void => {

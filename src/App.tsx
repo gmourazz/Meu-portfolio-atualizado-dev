@@ -8,8 +8,9 @@ import Technologies from "@/pages/Technologies";
 import Projects from "@/pages/Projects";
 import Contact from "@/pages/Contact";
 import Footer from "@/pages/Footer";
-import Navigation from "./pages/Navigation";
+import Navigation from "@/pages/Navigation";
 import AllProjects from "@/pages/AllProjects";
+import Certificates from "@/pages/Certificates";
 import BackToTopButton from "@/components/BackToTopButton";
 
 const App: React.FC = () => {
@@ -58,6 +59,9 @@ const App: React.FC = () => {
 
             {/* /projetos – lista completa */}
             <Route path="/projetos" element={<AllProjects />} />
+
+            {/* /certificados – página de certificados */}
+            <Route path="/certificados" element={<Certificates />} />
           </Routes>
         </main>
 

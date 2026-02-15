@@ -129,6 +129,7 @@ const Navigation: React.FC = () => {
     const labelMap: Record<NavSectionId, string> = {
       hero: t.nav.home,
       about: t.nav.about,
+      certificates: t.nav.certificates, 
       technologies: t.nav.technologies,
       projects: t.nav.projects,
       contact: t.nav.contact,

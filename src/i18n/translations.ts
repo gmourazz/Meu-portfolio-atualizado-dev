@@ -19,6 +19,7 @@ type TranslationKeys = {
   nav: {
     home: string;
     about: string;
+    certificates: string;
     technologies: string;
     projects: string;
     contact: string;
@@ -149,6 +150,19 @@ type TranslationKeys = {
     freelanceNote: string;
   };
 
+  // Certificates
+  certificates: {
+    badge: string;
+    title: string;
+    description: string;
+    items: Array<{
+      title: string;
+      institution: string;
+      date: string;
+      description: string;
+    }>;
+  };
+
   // Footer
   footer: {
     copyright: string;
@@ -177,6 +191,7 @@ export const translations: Record<Language, TranslationKeys> = {
     nav: {
       home: "Inicio",
       about: "Sobre",
+      certificates: "Certificados",
       technologies: "Tecnologias",
       projects: "Projetos",
       contact: "Contato",
@@ -386,6 +401,98 @@ export const translations: Record<Language, TranslationKeys> = {
       freelanceNote:
         "Pode me chamar para freelas pontuais, projetos maiores ou oportunidades de time",
     },
+    certificates: {
+      badge: "Aprendizados",
+      title: "Certificados",
+      description:
+        "Apaixonada por aprendizado contínuo, estou sempre buscando expandir meus conhecimentos e habilidades através de cursos e certificações que agregam valor à minha carreira em tecnologia.",
+      items: [
+        {
+          title: "NLW Pocket Javascript Basico",
+          institution: "Rocketseat",
+          date: "Setembro 2024",
+          description:
+            "Curso completo de Javascript basico focado em fundamentos da linguagem, estruturas de dados e logica de programacao.",
+        },
+        {
+          title: "Ciencia de Dados com Python",
+          institution: "DIO",
+          date: "Janeiro 2026",
+          description:
+            "Bootcamp de Ciência de Dados com Python, incluindo análise de dados, Pandas, visualização e machine learning aplicado.",
+        },
+        {
+          title: "AZ-900 com a Microsoft",
+          institution: "DIO",
+          date: "Setembro 2025",
+          description:
+            "Fundamentos de computação em nuvem Microsoft Azure, cloud computing, serviços Azure, segurança, privacidade e precificação.",
+        },
+        {
+          title: "Computacao em Nuvem",
+          institution: "DIO",
+          date: "Setembro 2025",
+          description:
+            "Fundamentos de cloud computing, modelos de serviço (IaaS, PaaS, SaaS), provedores de nuvem e conceitos de infraestrutura escalável.",
+        },
+        {
+          title: "AWS Cloud Foundations",
+          institution: "DIO",
+          date: "Setembro 2025",
+          description:
+            "Fundamentos da plataforma AWS, incluindo serviços principais, arquitetura de nuvem, segurança.",
+        },
+        {
+          title: "Fundamentos da Infra. AWS",
+          institution: "DIO",
+          date: "Setembro 2025",
+          description:
+            "Conceitos de infraestrutura AWS, incluindo EC2, S3, VPC, balanceamento de carga, escalabilidade e alta disponibilidade.",
+        },
+        {
+          title: "Versionamento de Codigo com Git e GitHub",
+          institution: "DIO",
+          date: "Dezembro 2025",
+          description:
+            "Controle de versão com Git, comandos, branching, merge, resolução de conflitos e colaboração em projetos através do GitHub.",
+        },
+        {
+          title: "Introducao a Banco de Dados Relacionais (SQL)",
+          institution: "DIO",
+          date: "Janeiro 2026",
+          description:
+            "Fundamentos de SQL, criação e manipulação de tabelas, consultas, joins, normalização e modelagem de banco de dados relacional.",
+        },
+        {
+          title: "Introducao a Banco de Dados NoSQL",
+          institution: "DIO",
+          date: "Janeiro 2026",
+          description:
+            "Conceitos de bancos NoSQL, tipos de armazenamento (documento, chave-valor, grafos), MongoDB, escalabilidade horizontal...",
+        },
+        {
+          title: "Infraestrutura Global AWS",
+          institution: "DIO",
+          date: "Janeiro 2026",
+          description:
+            "Arquitetura global da AWS, regiões, zonas de disponibilidade, edge locations e estratégias de distribuição global de aplicações.",
+        },
+        {
+          title: "Machine Learning",
+          institution: "DIO",
+          date: "Janeiro 2026",
+          description:
+            "Python aplicado a ML, bibliotecas essenciais (NumPy, Pandas, Scikit-learn), algoritmos de aprendizado e implementação de modelos.",
+        },
+        {
+          title: "Algoritmos e Logica de Programacao",
+          institution: "Udemy",
+          date: "Dezembro 2024",
+          description:
+            "Fundamentos de lógica de programação, estruturas de controle, laços de repetição...",
+        },
+      ],
+    },
     footer: {
       copyright: "2025 Geovanna Moura. Todos os direitos reservados.",
       madeWith: "Desenvolvido com carinho, cafe e codigo.",
@@ -412,6 +519,7 @@ export const translations: Record<Language, TranslationKeys> = {
     nav: {
       home: "Home",
       about: "About",
+      certificates: "Certificates",
       technologies: "Technologies",
       projects: "Projects",
       contact: "Contact",
@@ -621,6 +729,98 @@ export const translations: Record<Language, TranslationKeys> = {
       freelanceNote:
         "Feel free to reach out for one-time freelance work, larger projects or team opportunities",
     },
+    certificates: {
+      badge: "Learning",
+      title: "Certificates",
+      description:
+        "Passionate about continuous learning, I'm always seeking to expand my knowledge and skills through courses and certifications that add value to my career in technology.",
+      items: [
+        {
+          title: "NLW Pocket Basic Javascript",
+          institution: "Rocketseat",
+          date: "September 2024",
+          description:
+            "Complete basic Javascript course focused on language fundamentals, data structures and programming logic.",
+        },
+        {
+          title: "Data Science with Python",
+          institution: "DIO",
+          date: "January 2026",
+          description:
+            "Data Science bootcamp with Python, including data analysis, Pandas, visualization and applied machine learning.",
+        },
+        {
+          title: "AZ-900 with Microsoft",
+          institution: "DIO",
+          date: "September 2025",
+          description:
+            "Microsoft Azure cloud computing fundamentals, cloud computing, Azure services, security, privacy and pricing.",
+        },
+        {
+          title: "Cloud Computing",
+          institution: "DIO",
+          date: "September 2025",
+          description:
+            "Cloud computing fundamentals, service models (IaaS, PaaS, SaaS), cloud providers and scalable infrastructure concepts.",
+        },
+        {
+          title: "AWS Cloud Foundations",
+          institution: "DIO",
+          date: "September 2025",
+          description:
+            "AWS platform fundamentals, including core services, cloud architecture, security.",
+        },
+        {
+          title: "AWS Infrastructure Fundamentals",
+          institution: "DIO",
+          date: "September 2025",
+          description:
+            "AWS infrastructure concepts, including EC2, S3, VPC, load balancing, scalability and high availability.",
+        },
+        {
+          title: "Version Control with Git and GitHub",
+          institution: "DIO",
+          date: "December 2025",
+          description:
+            "Version control with Git, commands, branching, merge, conflict resolution and project collaboration through GitHub.",
+        },
+        {
+          title: "Introduction to Relational Databases (SQL)",
+          institution: "DIO",
+          date: "January 2026",
+          description:
+            "SQL fundamentals, table creation and manipulation, queries, joins, normalization and relational database modeling.",
+        },
+        {
+          title: "Introduction to NoSQL Databases",
+          institution: "DIO",
+          date: "January 2026",
+          description:
+            "NoSQL database concepts, storage types (document, key-value, graph), MongoDB, horizontal scalability...",
+        },
+        {
+          title: "AWS Global Infrastructure",
+          institution: "DIO",
+          date: "January 2026",
+          description:
+            "AWS global architecture, regions, availability zones, edge locations and global application distribution strategies.",
+        },
+        {
+          title: "Machine Learning",
+          institution: "DIO",
+          date: "January 2026",
+          description:
+            "Python applied to ML, essential libraries (NumPy, Pandas, Scikit-learn), learning algorithms and model implementation.",
+        },
+        {
+          title: "Algorithms and Programming Logic",
+          institution: "Udemy",
+          date: "December 2024",
+          description:
+            "Programming logic fundamentals, control structures, loops...",
+        },
+      ],
+    },
     footer: {
       copyright: "2025 Geovanna Moura. All rights reserved.",
       madeWith: "Made with love, coffee and code.",
@@ -647,6 +847,7 @@ export const translations: Record<Language, TranslationKeys> = {
     nav: {
       home: "Inicio",
       about: "Sobre mi",
+      certificates: "Certificados",
       technologies: "Tecnologias",
       projects: "Proyectos",
       contact: "Contacto",
@@ -855,6 +1056,98 @@ export const translations: Record<Language, TranslationKeys> = {
       openNewTab: "Abrir en nueva pestana",
       freelanceNote:
         "Puedes contactarme para freelance puntual, proyectos mas grandes u oportunidades de equipo",
+    },
+    certificates: {
+      badge: "Aprendizaje",
+      title: "Certificados",
+      description:
+        "Apasionada por el aprendizaje continuo, siempre busco expandir mis conocimientos y habilidades a través de cursos y certificaciones que agregan valor a mi carrera en tecnología.",
+      items: [
+        {
+          title: "NLW Pocket Javascript Basico",
+          institution: "Rocketseat",
+          date: "Septiembre 2024",
+          description:
+            "Curso completo de Javascript básico enfocado en fundamentos del lenguaje, estructuras de datos y lógica de programación.",
+        },
+        {
+          title: "Ciencia de Datos con Python",
+          institution: "DIO",
+          date: "Enero 2026",
+          description:
+            "Bootcamp de Ciencia de Datos con Python, incluyendo análisis de datos, Pandas, visualización y machine learning aplicado.",
+        },
+        {
+          title: "AZ-900 con Microsoft",
+          institution: "DIO",
+          date: "Septiembre 2025",
+          description:
+            "Fundamentos de computación en nube Microsoft Azure, cloud computing, servicios Azure, seguridad, privacidad y precios.",
+        },
+        {
+          title: "Computacion en Nube",
+          institution: "DIO",
+          date: "Septiembre 2025",
+          description:
+            "Fundamentos de cloud computing, modelos de servicio (IaaS, PaaS, SaaS), proveedores de nube y conceptos de infraestructura escalable.",
+        },
+        {
+          title: "AWS Cloud Foundations",
+          institution: "DIO",
+          date: "Septiembre 2025",
+          description:
+            "Fundamentos de la plataforma AWS, incluyendo servicios principales, arquitectura de nube, seguridad.",
+        },
+        {
+          title: "Fundamentos de Infraestructura AWS",
+          institution: "DIO",
+          date: "Septiembre 2025",
+          description:
+            "Conceptos de infraestructura AWS, incluyendo EC2, S3, VPC, balanceo de carga, escalabilidad y alta disponibilidad.",
+        },
+        {
+          title: "Control de Versiones con Git y GitHub",
+          institution: "DIO",
+          date: "Diciembre 2025",
+          description:
+            "Control de versiones con Git, comandos, branching, merge, resolución de conflictos y colaboración en proyectos a través de GitHub.",
+        },
+        {
+          title: "Introduccion a Bases de Datos Relacionales (SQL)",
+          institution: "DIO",
+          date: "Enero 2026",
+          description:
+            "Fundamentos de SQL, creación y manipulación de tablas, consultas, joins, normalización y modelado de base de datos relacional.",
+        },
+        {
+          title: "Introduccion a Bases de Datos NoSQL",
+          institution: "DIO",
+          date: "Enero 2026",
+          description:
+            "Conceptos de bases de datos NoSQL, tipos de almacenamiento (documento, clave-valor, grafos), MongoDB, escalabilidad horizontal...",
+        },
+        {
+          title: "Infraestructura Global AWS",
+          institution: "DIO",
+          date: "Enero 2026",
+          description:
+            "Arquitectura global de AWS, regiones, zonas de disponibilidad, edge locations y estrategias de distribución global de aplicaciones.",
+        },
+        {
+          title: "Machine Learning",
+          institution: "DIO",
+          date: "Enero 2026",
+          description:
+            "Python aplicado a ML, bibliotecas esenciales (NumPy, Pandas, Scikit-learn), algoritmos de aprendizaje e implementación de modelos.",
+        },
+        {
+          title: "Algoritmos y Logica de Programacion",
+          institution: "Udemy",
+          date: "Diciembre 2024",
+          description:
+            "Fundamentos de lógica de programación, estructuras de control, bucles...",
+        },
+      ],
     },
     footer: {
       copyright: "2025 Geovanna Moura. Todos los derechos reservados.",

@@ -1,19 +1,25 @@
-
 import type { NavItem, NavSectionId } from "@/types/navigation";
 
 export function getDefaultNavItems(): NavItem[] {
   return [
     { id: "hero", label: "Início" },
     { id: "about", label: "Sobre" },
+    { id: "certificates", label: "Certificados" },
     { id: "technologies", label: "Tecnologias" },
     { id: "projects", label: "Projetos" },
     { id: "contact", label: "Contato" },
   ];
 }
 
-export function getVisibleNavItems(pathname: string, items: NavItem[]): NavItem[] {
+export function getVisibleNavItems(
+  pathname: string,
+  items: NavItem[],
+): NavItem[] {
   if (pathname === "/projetos") {
     return items.filter((item) => item.id !== "projects");
+  }
+  if (pathname === "/certificados") {
+    return items.filter((item) => item.id !== "certificates");
   }
   return items;
 }
@@ -32,8 +38,15 @@ type HandleNavClickParams = {
 
 export function handleNavClick(
   sectionId: NavSectionId,
-  { pathname, navigate, closeMenu, delayMs = 200 }: HandleNavClickParams
+  { pathname, navigate, closeMenu, delayMs = 200 }: HandleNavClickParams,
 ): void {
+  // Se clicar em "certificates", vai para a rota /certificados
+  if (sectionId === "certificates") {
+    navigate("/certificados");
+    closeMenu();
+    return;
+  }
+
   // se não estiver na home, vai pra home e depois faz o scroll
   if (pathname !== "/") {
     navigate("/");
